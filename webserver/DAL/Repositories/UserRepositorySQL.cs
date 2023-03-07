@@ -2,7 +2,7 @@
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace DAL.Repositories
 
         public User Create(User u) //добавление нового
         {
-            return db.User.Add(u);
+            return db.User.Add(u).Entity;
         }
 
         public void Update(User u) //обновление

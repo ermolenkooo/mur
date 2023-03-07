@@ -2,7 +2,7 @@
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace DAL.Repositories
 
         public Country Create(Country c) //добавление нового
         {
-            return db.Country.Add(c);
+            return db.Country.Add(c).Entity;
         }
 
         public void Update(Country c) //обновление

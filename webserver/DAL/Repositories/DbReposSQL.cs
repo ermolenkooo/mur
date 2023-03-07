@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Interfaces;
+﻿using DAL.Interfaces;
 using DAL.Entities;
-using static System.Collections.Specialized.BitVector32;
-using System.Net.Sockets;
 
 namespace DAL.Repositories
 {

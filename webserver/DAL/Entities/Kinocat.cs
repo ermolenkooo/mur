@@ -1,16 +1,19 @@
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Net.Sockets;
 
 namespace DAL.Entities
 {
     public partial class Kinocat : DbContext
     {
-        public Kinocat()
+        /*public Kinocat()
             : base("name=DbContext")
         {
-        }
+        }*/
+        public Kinocat(DbContextOptions<Kinocat> options) : base(options)
+        { }
+        public Kinocat() 
+        { }
 
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Country> Country { get; set; }
@@ -24,9 +27,113 @@ namespace DAL.Entities
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Watchlist> Watchlist { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //подключение к базе данных
         {
-            modelBuilder.Entity<Admin>()
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=LAPTOP-NE8A180M\\SQLEXPRESS;Database=kinocat;Trusted_Connection=True;");
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Film>(entity =>
+            {
+                entity.Property(e => e.Name).IsRequired();
+                entity.HasOne(d => d.Genre)
+                .WithMany(p => p.Film)
+                .HasForeignKey(d => d.Id_genre);
+                entity.HasOne(d => d.Country)
+                .WithMany(p => p.Film)
+                .HasForeignKey(d => d.Id_country);
+                entity.HasOne(f => f.Serial)
+                .WithOne(s => s.Film)
+                .HasForeignKey<Serial>(s => s.Id);
+            });
+
+            modelBuilder.Entity<Genre>(entity =>
+            {
+                entity.Property(e => e.Name).IsRequired();
+            });
+
+            modelBuilder.Entity<Country>(entity =>
+            {
+                entity.Property(e => e.Name).IsRequired();
+            });
+
+            modelBuilder.Entity<Admin>(entity =>
+            {
+                entity.Property(e => e.Name).IsRequired();
+                entity.Property(e => e.Password).IsRequired();
+            });
+
+            /*modelBuilder.Entity<Serial>(entity =>
+            {
+                entity.HasOne(d => d.Film)
+                .WithOne(p => p.Serial)
+                .HasForeignKey(d => d.Id);
+            });*/                
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Name).IsRequired();
+                entity.Property(e => e.Email).IsRequired();
+                entity.Property(e => e.Password).IsRequired();
+                entity.Property(e => e.Photo).IsRequired();
+            });
+
+            modelBuilder.Entity<Following>(entity =>
+            {
+                entity.HasOne(d => d.User)
+                .WithMany(p => p.Following)
+                .HasForeignKey(d => d.Id_follower);
+                entity.HasOne(d => d.User1)
+                .WithMany(p => p.Following1)
+                .HasForeignKey(d => d.Id_following);
+            });
+
+            modelBuilder.Entity<Watchlist>(entity =>
+            {
+                entity.HasOne(d => d.User)
+                .WithMany(p => p.Watchlist)
+                .HasForeignKey(d => d.Id_user);
+                entity.HasOne(d => d.Film)
+                .WithMany(p => p.Watchlist)
+                .HasForeignKey(d => d.Id_film);
+            });
+
+            modelBuilder.Entity<Mark>(entity =>
+            {
+                entity.HasOne(d => d.User)
+                .WithMany(p => p.Mark)
+                .HasForeignKey(d => d.Id_user);
+                entity.HasOne(d => d.Film)
+                .WithMany(p => p.Mark1)
+                .HasForeignKey(d => d.Id_film);
+            });
+
+            modelBuilder.Entity<Love>(entity =>
+            {
+                entity.HasOne(d => d.User)
+                .WithMany(p => p.Love)
+                .HasForeignKey(d => d.Id_user);
+                entity.HasOne(d => d.Film)
+                .WithMany(p => p.Love)
+                .HasForeignKey(d => d.Id_film);
+            });
+
+            modelBuilder.Entity<Letter>(entity =>
+            {
+                entity.HasOne(d => d.User)
+                .WithMany(p => p.Letter)
+                .HasForeignKey(d => d.Id_user);
+                entity.HasOne(d => d.Film)
+                .WithMany(p => p.Letter)
+                .HasForeignKey(d => d.Id_film);
+                entity.Property(e => e.Text).IsRequired();
+            });
+
+            /*modelBuilder.Entity<Admin>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
@@ -166,7 +273,7 @@ namespace DAL.Entities
                 .HasMany(e => e.Watchlist)
                 .WithRequired(e => e.User)
                 .HasForeignKey(e => e.Id_user)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(false);*/
         }
     }
 }

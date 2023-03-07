@@ -2,7 +2,7 @@
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace DAL.Repositories
 
         public Serial Create(Serial s) //добавление нового
         {
-            return db.Serial.Add(s);
+            return db.Serial.Add(s).Entity;
         }
 
         public void Update(Serial s) //обновление

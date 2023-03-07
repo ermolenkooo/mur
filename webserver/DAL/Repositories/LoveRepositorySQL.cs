@@ -2,7 +2,7 @@
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace DAL.Repositories
 
         public Love Create(Love l) //добавление нового
         {
-            return db.Love.Add(l);
+            return db.Love.Add(l).Entity;
         }
 
         public void Update(Love l) //обновление

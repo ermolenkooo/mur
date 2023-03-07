@@ -2,7 +2,7 @@
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace DAL.Repositories
 
         public Genre Create(Genre g) //добавление нового
         {
-            return db.Genre.Add(g);
+            return db.Genre.Add(g).Entity;
         }
 
         public void Update(Genre g) //обновление

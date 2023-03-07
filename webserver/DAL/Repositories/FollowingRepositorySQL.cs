@@ -2,7 +2,7 @@
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace DAL.Repositories
 
         public Following Create(Following f) //добавление нового
         {
-            return db.Following.Add(f);
+            return db.Following.Add(f).Entity;
         }
 
         public void Update(Following f) //обновление

@@ -2,7 +2,7 @@
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace DAL.Repositories
 
         public Film Create(Film f) //добавление нового фильма
         {
-            return db.Film.Add(f);
+            return db.Film.Add(f).Entity;
         }
 
         public void Update(Film f) //обновление фильма 

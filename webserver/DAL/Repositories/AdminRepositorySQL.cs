@@ -1,11 +1,8 @@
 ﻿using DAL.Entities;
 using DAL.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
@@ -32,7 +29,7 @@ namespace DAL.Repositories
 
         public Admin Create(Admin a) //добавление нового
         {
-            return db.Admin.Add(a);
+            return db.Admin.Add(a).Entity;
         }
 
         public void Update(Admin a) //обновление

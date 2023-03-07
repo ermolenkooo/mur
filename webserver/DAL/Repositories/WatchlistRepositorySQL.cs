@@ -2,7 +2,7 @@
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +32,8 @@ namespace DAL.Repositories
 
         public Watchlist Create(Watchlist w) //добавление нового
         {
-            return db.Watchlist.Add(w);
+            var n = db.Watchlist.Add(w);
+            return db.Watchlist.Add(w).Entity;
         }
 
         public void Update(Watchlist w) //обновление

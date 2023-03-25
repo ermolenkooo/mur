@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Data;
+using DAL.Entities;
+using System;
 
 namespace webserver.Controllers
 {
@@ -41,6 +43,10 @@ namespace webserver.Controllers
             {
                 return BadRequest(ModelState);
             }
+            string base64ImageRepresentation = "data:image/jpeg;base64,";
+            byte[] imageArray = System.IO.File.ReadAllBytes(serial.Poster);
+            base64ImageRepresentation += Convert.ToBase64String(imageArray);
+            serial.Poster = base64ImageRepresentation;
             crudServ.CreateSerial(serial);
             return CreatedAtAction("GetSerial", new { id = serial.Id }, serial);
         }
@@ -63,7 +69,10 @@ namespace webserver.Controllers
             item.Id_country = serial.Id_country;
             item.Timing = serial.Timing;
             item.Description = serial.Description;
-            item.Poster = serial.Poster;
+            string base64ImageRepresentation = "data:image/jpeg;base64,";
+            byte[] imageArray = System.IO.File.ReadAllBytes(serial.Poster);
+            base64ImageRepresentation += Convert.ToBase64String(imageArray);
+            item.Poster = base64ImageRepresentation;
             item.Year = serial.Year;
             item.Age = serial.Age;
             item.Original = serial.Original;

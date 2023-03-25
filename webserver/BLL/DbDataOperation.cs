@@ -30,7 +30,11 @@ namespace BLL
 
         public List<FilmModel> GetAllFilms() //получение списка фильмов
         {
-            return db.Films.GetList().Where(i => i.Serial == null).Select(i => new FilmModel(i)).ToList();
+            List<FilmModel> films = db.Films.GetList().Select(i => new FilmModel(i)).ToList();
+            var serials = db.Serials.GetList();
+            foreach (var s in serials)
+                films.Remove(films.Where(x => x.Id == s.Id).FirstOrDefault());
+            return films;
         }
         public List<CountryModel> GetAllCountries() //получение списка стран
         {
@@ -131,7 +135,7 @@ namespace BLL
             Film f = db.Films.GetItem(id);
             if (f != null)
             {
-                var letters = db.Letters.GetList().Where(i => i.Id_film == id);
+                /*var letters = db.Letters.GetList().Where(i => i.Id_film == id);
                 var loves = db.Loves.GetList().Where(i => i.Id_film == id);
                 var marks = db.Marks.GetList().Where(i => i.Id_film == id);
                 var watchlists = db.Watchlists.GetList().Where(i => i.Id_film == id);
@@ -142,7 +146,7 @@ namespace BLL
                 foreach (var m in marks)
                     db.Marks.Delete(m.Id);
                 foreach (var w in watchlists)
-                    db.Watchlists.Delete(w.Id);
+                    db.Watchlists.Delete(w.Id);*/
                 db.Films.Delete(f.Id);
                 Save();
             }
@@ -292,6 +296,7 @@ namespace BLL
                 Timing = s.Timing,
                 Year = s.Year
             });
+            Save();
             db.Serials.Create(new Serial()
             {
                 Id = f.Id,

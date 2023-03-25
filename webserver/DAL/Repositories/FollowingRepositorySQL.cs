@@ -21,7 +21,7 @@ namespace DAL.Repositories
         public List<Following> GetList() //получение списка
         {
             List<Following> followings = db.Following.ToList();
-            db.Dispose();
+            //db.Dispose();
             return followings;
         }
 

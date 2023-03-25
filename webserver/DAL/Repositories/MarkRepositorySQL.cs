@@ -21,7 +21,7 @@ namespace DAL.Repositories
         public List<Mark> GetList() //получение списка
         {
             List<Mark> marks = db.Mark.ToList();
-            db.Dispose();
+            //db.Dispose();
             return marks;
         }
 

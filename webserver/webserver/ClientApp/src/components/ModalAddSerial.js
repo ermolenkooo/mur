@@ -66,11 +66,12 @@ export class ModalAdd extends React.Component { //класс модальног�
         var serialYear = this.state.year.trim();
         var serialAge = this.state.age.trim();
         var serialOriginal = this.state.original.trim();
+        var or = this.state.original.trim();
         var serialSeasons = this.state.seasons.trim();
         if (!serialName || !serialDescription || !serialTiming || !serialGenre || !serialCountry || !serialYear || !serialAge || !serialOriginal) {
             return;
         }
-        this.props.onSerialSubmit({ name: serialName, seasons: serialSeasons, description: serialDescription, timing: serialTiming, id_genre: serialGenre, id_country: serialCountry, poster: serialPoster, year: serialYear, age: serialAge, original: serialOriginal });
+        this.props.onSerialSubmit({ name: serialName, seasons: serialSeasons, description: serialDescription, timing: serialTiming, id_genre: serialGenre, id_country: serialCountry, poster: serialPoster, year: serialYear, age: serialAge, original: or });
         this.setState({ name: "", timing: "", id_genre: "", id_country: "", seasons: "", description: "", poster: "", year: "", age: "", original: "" });
         this.toggle();
     }
@@ -152,7 +153,7 @@ export class ModalAdd extends React.Component { //класс модальног�
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="control-label required">Год выхода</label>
+                                    <label className="control-label required">Годы выхода</label>
                                     <input typeName="text"
                                         class="form-control" id="InputYear" required="required" placeholder="Введите год выхода"
                                         value={this.state.year}

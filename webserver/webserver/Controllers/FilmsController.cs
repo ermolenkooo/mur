@@ -69,10 +69,13 @@ namespace webserver.Controllers
             item.Id_country = film.Id_country;
             item.Timing = film.Timing;
             item.Description = film.Description;
-            string base64ImageRepresentation = "data:image/jpeg;base64,";
-            byte[] imageArray = System.IO.File.ReadAllBytes(film.Poster);
-            base64ImageRepresentation += Convert.ToBase64String(imageArray);
-            item.Poster = base64ImageRepresentation;
+            if (film.Poster != "D:/университет/то что нельзя называть/постеры/")
+            {
+                string base64ImageRepresentation = "data:image/jpeg;base64,";
+                byte[] imageArray = System.IO.File.ReadAllBytes(film.Poster);
+                base64ImageRepresentation += Convert.ToBase64String(imageArray);
+                item.Poster = base64ImageRepresentation;
+            }
             item.Year = film.Year;
             item.Age = film.Age;
             item.Original = film.Original;

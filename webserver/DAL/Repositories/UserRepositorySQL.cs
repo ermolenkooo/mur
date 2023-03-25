@@ -21,7 +21,7 @@ namespace DAL.Repositories
         public List<User> GetList() //получение списка
         {
             List<User> users = db.User.ToList();
-            db.Dispose();
+            //db.Dispose();
             return users;
         }
 

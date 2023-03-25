@@ -12,17 +12,17 @@ export class Serial extends Component {
         this.toggle = this.toggle.bind(this);
         this.toggle1 = this.toggle1.bind(this);
     }
-    toggle() { //изменяем состояние отвечающее за вывод модального окна
+    toggle() { //РёР·РјРµРЅСЏРµРј СЃРѕСЃС‚РѕСЏРЅРёРµ РѕС‚РІРµС‡Р°СЋС‰РµРµ Р·Р° РІС‹РІРѕРґ РјРѕРґР°Р»СЊРЅРѕРіРѕ РѕРєРЅР°
         this.setState({
             modal: !this.state.modal
         });
     }
-    toggle1() { //изменяем состояние отвечающее за вывод модального окна
+    toggle1() { //РёР·РјРµРЅСЏРµРј СЃРѕСЃС‚РѕСЏРЅРёРµ РѕС‚РІРµС‡Р°СЋС‰РµРµ Р·Р° РІС‹РІРѕРґ РјРѕРґР°Р»СЊРЅРѕРіРѕ РѕРєРЅР°
         this.setState({
             modal1: !this.state.modal1
         });
     }
-    onClick(e) { //удаление
+    onClick(e) { //СѓРґР°Р»РµРЅРёРµ
         this.props.onRemove(this.state.data);
     }
     render() { 
@@ -36,16 +36,16 @@ export class Serial extends Component {
                         <td valign="top">
                             <h4><b>{this.state.data.name} / {this.state.data.original}</b></h4>
                             <h5 align='justify'>{this.state.data.description}</h5>
-                            <h5>Жанр: {this.props.genre}</h5>
-                            <h5>Страна: {this.props.country}</h5>
-                            <h5>Хронометраж: {this.state.data.timing}</h5>
-                            <h5>Количество сезонов: {this.state.data.seasons}</h5>
-                            <h5>Год выхода: {this.state.data.year}</h5>
-                            <h5>Возрастное ограничение: {this.state.data.age}</h5>
+                            <h5>Р–Р°РЅСЂ: {this.props.genre}</h5>
+                            <h5>РЎС‚СЂР°РЅР°: {this.props.country}</h5>
+                            <h5>РҐСЂРѕРЅРѕРјРµС‚СЂР°Р¶: {this.state.data.timing}</h5>
+                            <h5>РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРµР·РѕРЅРѕРІ: {this.state.data.seasons}</h5>
+                            <h5>Р“РѕРґС‹ РІС‹С…РѕРґР°: {this.state.data.year}</h5>
+                            <h5>Р’РѕР·СЂР°СЃС‚РЅРѕРµ РѕРіСЂР°РЅРёС‡РµРЅРёРµ: {this.state.data.age}</h5>
                             <div>
-                                <ModalEdit onFilmSubmit={this.props.onUpdate} film={this.state.data} />
+                                <ModalEdit onFilmSubmit={this.props.onUpdate} serial={this.state.data} />
                                 <p></p>
-                                <button className="btn btn-outline-success" onClick={this.onClick} style={{ marginRight: '10px' }}>Удалить</button>
+                                <button className="btn btn-outline-success" onClick={this.onClick} style={{ marginRight: '10px' }}>РЈРґР°Р»РёС‚СЊ</button>
                             </div>
                         </td>
                     </tr>
@@ -65,9 +65,9 @@ export class Serials extends React.Component {
         this.onUpdateSerial = this.onUpdateSerial.bind(this);
         this.loadData = this.loadData.bind(this);
     }
-    // загрузка данных
+    // Р·Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С…
     loadData() {
-        var xhr = new XMLHttpRequest(); //запрос на получение списка
+        var xhr = new XMLHttpRequest(); //Р·Р°РїСЂРѕСЃ РЅР° РїРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР°
         xhr.open("get", "/api/serials/", true);
         xhr.onload = function () {
             //console.log(xhr.responseText);
@@ -76,7 +76,7 @@ export class Serials extends React.Component {
         }.bind(this);
         xhr.send();
 
-        var xhr1 = new XMLHttpRequest(); //запрос на получение списка стран
+        var xhr1 = new XMLHttpRequest(); //Р·Р°РїСЂРѕСЃ РЅР° РїРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° СЃС‚СЂР°РЅ
         xhr1.open("get", "/api/Countries/", true);
         xhr1.onload = function () {
             //console.log(xhr1.responseText);
@@ -85,7 +85,7 @@ export class Serials extends React.Component {
         }.bind(this);
         xhr1.send();
 
-        var xhr2 = new XMLHttpRequest(); //запрос на получение списка жанров
+        var xhr2 = new XMLHttpRequest(); //Р·Р°РїСЂРѕСЃ РЅР° РїРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° Р¶Р°РЅСЂРѕРІ
         xhr2.open("get", "/api/Genres/", true);
         xhr2.onload = function () {
             //console.log(xhr2.responseText);
@@ -97,7 +97,7 @@ export class Serials extends React.Component {
     componentDidMount() {
         this.loadData();
     }
-    // добавление объекта
+    // РґРѕР±Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р°
     onAddSerial(serial) {
         if (serial) {
             var xhr = new XMLHttpRequest();
@@ -109,7 +109,7 @@ export class Serials extends React.Component {
             xhr.send(JSON.stringify({ name: serial.name, id_genre: serial.id_genre, year: serial.year, age: serial.age, timing: serial.timing, serial: serial.original, id_country: serial.id_country, poster: serial.poster, description: serial.description, seasons: serial.seasons }));
         }
     }
-    // удаление объекта
+    // СѓРґР°Р»РµРЅРёРµ РѕР±СЉРµРєС‚Р°
     onRemoveSerial(serial) {
         if (serial) {
             var url = "/api/serials" + "/" + serial.id;
@@ -122,7 +122,7 @@ export class Serials extends React.Component {
             xhr.send();
         }
     }
-    //редактирование
+    //СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ
     onUpdateSerial(serial) {
         if (serial) {
             var xhr = new XMLHttpRequest();
@@ -146,7 +146,7 @@ export class Serials extends React.Component {
             <div>
                 <ModalAdd onSerialSubmit={this.onAddSerial} />
                 <p></p>
-                <h2><b>Список сериалов</b></h2>
+                <h2><b>РЎРїРёСЃРѕРє СЃРµСЂРёР°Р»РѕРІ</b></h2>
                 <div>
                     {
                         this.state.serials.map(function (serial) {
@@ -161,7 +161,7 @@ export class Serials extends React.Component {
                                 if (mycountries[i].id == serial.id_country)
                                     mycountry = mycountries[i].name;
                             }
-                            //для каждого элемента рендерим класс
+                            //РґР»СЏ РєР°Р¶РґРѕРіРѕ СЌР»РµРјРµРЅС‚Р° СЂРµРЅРґРµСЂРёРј РєР»Р°СЃСЃ
                             return <Serial key={serial.id} serial={serial} onRemove={remove} onEdit={edit} onUpdate={update} load={load} genre={mygenre} country={mycountry} />
                         })
                     }

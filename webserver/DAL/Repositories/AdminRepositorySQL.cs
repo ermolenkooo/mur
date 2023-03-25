@@ -18,7 +18,7 @@ namespace DAL.Repositories
         public List<Admin> GetList() //получение списка
         {
             List<Admin> admins = db.Admin.ToList();
-            db.Dispose();
+            //db.Dispose();
             return admins;
         }
 

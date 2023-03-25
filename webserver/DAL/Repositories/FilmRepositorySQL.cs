@@ -21,7 +21,7 @@ namespace DAL.Repositories
         public List<Film> GetList() //получение списка фильмов
         {
             List<Film> films = db.Film.ToList();
-            db.Dispose();
+            //db.Dispose();
             return films;
         }
 

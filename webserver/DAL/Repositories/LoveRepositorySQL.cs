@@ -21,7 +21,7 @@ namespace DAL.Repositories
         public List<Love> GetList() //получение списка
         {
             List<Love> loves = db.Love.ToList();
-            db.Dispose();
+            //db.Dispose();
             return loves;
         }
 

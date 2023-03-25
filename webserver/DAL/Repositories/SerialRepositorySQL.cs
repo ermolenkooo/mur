@@ -21,7 +21,7 @@ namespace DAL.Repositories
         public List<Serial> GetList() //получение списка
         {
             List<Serial> serials = db.Serial.ToList();
-            db.Dispose();
+            //db.Dispose();
             return serials;
         }
 

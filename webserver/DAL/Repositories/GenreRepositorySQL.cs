@@ -21,7 +21,7 @@ namespace DAL.Repositories
         public List<Genre> GetList() //получение списка
         {
             List<Genre> genres = db.Genre.ToList();
-            db.Dispose();
+            //db.Dispose();
             return genres;
         }
 

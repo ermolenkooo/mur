@@ -67,11 +67,14 @@ export class ModalEdit extends React.Component { //класс модальног
         var serialGenre = this.state.id_genre;
         var serialCountry = this.state.id_country;
         var serialDescription = this.state.description.trim();
-        var serialPoster = "D:/университет/то что нельзя называть/постеры/" + this.fileInput.current.files[0].name;        var filmYear = this.state.year.trim();
+        var serialPoster = "D:/университет/то что нельзя называть/постеры/";
+        if (this.fileInput.current.files[0] != null)
+            serialPoster += this.fileInput.current.files[0].name;
         var serialAge = this.state.age.trim();
         var serialSeasons = this.state.seasons.trim();
         var serialOriginal = this.state.original.trim();
         var serialId = this.props.serial.id;
+        var serialYear = this.state.year.trim();
         if (!serialName || !serialDescription || !serialTiming || !serialGenre || !serialCountry || !serialAge || !serialYear || !serialSeasons) {
             return;
         }
@@ -156,7 +159,7 @@ export class ModalEdit extends React.Component { //класс модальног
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="control-label required">Год выхода</label>
+                                    <label className="control-label required">Годы выхода</label>
                                     <input typeName="text"
                                         class="form-control" id="InputYear" required="required" placeholder="Введите год выхода"
                                         value={this.state.year}

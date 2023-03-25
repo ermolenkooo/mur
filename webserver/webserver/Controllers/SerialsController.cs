@@ -69,10 +69,13 @@ namespace webserver.Controllers
             item.Id_country = serial.Id_country;
             item.Timing = serial.Timing;
             item.Description = serial.Description;
-            string base64ImageRepresentation = "data:image/jpeg;base64,";
-            byte[] imageArray = System.IO.File.ReadAllBytes(serial.Poster);
-            base64ImageRepresentation += Convert.ToBase64String(imageArray);
-            item.Poster = base64ImageRepresentation;
+            if (serial.Poster != "D:/университет/то что нельзя называть/постеры/")
+            {
+                string base64ImageRepresentation = "data:image/jpeg;base64,";
+                byte[] imageArray = System.IO.File.ReadAllBytes(serial.Poster);
+                base64ImageRepresentation += Convert.ToBase64String(imageArray);
+                item.Poster = base64ImageRepresentation;
+            }
             item.Year = serial.Year;
             item.Age = serial.Age;
             item.Original = serial.Original;

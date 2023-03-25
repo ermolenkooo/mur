@@ -21,7 +21,7 @@ namespace DAL.Repositories
         public List<Watchlist> GetList() //получение списка
         {
             List<Watchlist> watchlists = db.Watchlist.ToList();
-            db.Dispose();
+            //db.Dispose();
             return watchlists;
         }
 

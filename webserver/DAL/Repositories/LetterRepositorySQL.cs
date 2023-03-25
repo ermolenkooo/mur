@@ -21,7 +21,7 @@ namespace DAL.Repositories
         public List<Letter> GetList() //получение списка
         {
             List<Letter> letters = db.Letter.ToList();
-            db.Dispose();
+            //db.Dispose();
             return letters;
         }
 

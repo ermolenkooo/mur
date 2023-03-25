@@ -21,7 +21,7 @@ namespace DAL.Repositories
         public List<Country> GetList() //получение списка
         {
             List<Country> countries = db.Country.ToList();
-            db.Dispose();
+            //db.Dispose();
             return countries;
         }
 

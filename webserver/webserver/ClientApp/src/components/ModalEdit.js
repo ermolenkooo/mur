@@ -63,7 +63,10 @@ export class ModalEdit extends React.Component { //класс модальног
         var filmGenre = this.state.id_genre;
         var filmCountry = this.state.id_country;
         var filmDescription = this.state.description.trim();
-        var filmPoster = "D:/университет/то что нельзя называть/постеры/" + this.fileInput.current.files[0].name;        var filmYear = this.state.year.trim();
+        var filmPoster = "D:/университет/то что нельзя называть/постеры/";
+        if (this.fileInput.current.files[0] != null)
+            filmPoster += this.fileInput.current.files[0].name;
+        var filmYear = this.state.year.trim();
         var filmAge = this.state.age.trim();
         var filmOriginal = this.state.original.trim();
         var filmId = this.props.film.id;

@@ -133,6 +133,7 @@ export class Films extends React.Component { //класс листа фильм�
             }.bind(this);
             xhr.send(JSON.stringify(film));
         }
+        this.loadData();
     }
     render() {
         var load = this.loadData;

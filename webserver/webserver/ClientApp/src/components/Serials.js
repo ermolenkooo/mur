@@ -97,6 +97,10 @@ export class Serials extends React.Component {
     componentDidMount() {
         this.loadData();
     }
+    /*componentDidUpdate() {
+        //alert("fjfd");
+        this.loadData();
+    }*/
     // добавление объекта
     onAddSerial(serial) {
         if (serial) {
@@ -133,6 +137,7 @@ export class Serials extends React.Component {
                 this.forceUpdate();
             }.bind(this);
             xhr.send(JSON.stringify(serial));
+            //this.loadData();
         }
     }
     render() {

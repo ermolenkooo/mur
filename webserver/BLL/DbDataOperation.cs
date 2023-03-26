@@ -135,7 +135,7 @@ namespace BLL
             Film f = db.Films.GetItem(id);
             if (f != null)
             {
-                /*var letters = db.Letters.GetList().Where(i => i.Id_film == id);
+                var letters = db.Letters.GetList().Where(i => i.Id_film == id);
                 var loves = db.Loves.GetList().Where(i => i.Id_film == id);
                 var marks = db.Marks.GetList().Where(i => i.Id_film == id);
                 var watchlists = db.Watchlists.GetList().Where(i => i.Id_film == id);
@@ -146,7 +146,7 @@ namespace BLL
                 foreach (var m in marks)
                     db.Marks.Delete(m.Id);
                 foreach (var w in watchlists)
-                    db.Watchlists.Delete(w.Id);*/
+                    db.Watchlists.Delete(w.Id);
                 db.Films.Delete(f.Id);
                 Save();
             }

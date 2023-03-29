@@ -37,7 +37,7 @@ export class Layout extends Component {
     }
 
     async getData() {
-        const token = sessionStorage.getItem('tokenKey');
+        const token = sessionStorage.getItem('accessToken');
         const response = await fetch("/api/Authorization/getlogin", {
             method: "GET",
             headers: {

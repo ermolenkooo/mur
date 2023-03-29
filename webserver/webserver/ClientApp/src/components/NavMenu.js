@@ -49,7 +49,7 @@ export class NavMenu extends Component {
 }*/
 
 import React, { Component } from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Button } from 'reactstrap';
 import { Link, useHistory } from 'react-router-dom';
 import './NavMenu.css';
 
@@ -58,7 +58,7 @@ const LogOut = () => {
 
     const goToHome = () => {
         history.push("/");
-        sessionStorage.removeItem('tokenKey');
+        sessionStorage.removeItem('accessToken');
         window.location.reload();
     }
 

@@ -28,7 +28,7 @@ namespace webserver.Controllers
                 access_token = myIdentity.CreateToken(),
                 username = identity.Name
             };
-
+            
             return Json(response);
         }
     }

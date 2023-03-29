@@ -110,7 +110,7 @@ export class Serials extends React.Component {
             xhr.onload = function () {
                 this.loadData();
             }.bind(this);
-            xhr.send(JSON.stringify({ name: serial.name, id_genre: serial.id_genre, year: serial.year, age: serial.age, timing: serial.timing, serial: serial.original, id_country: serial.id_country, poster: serial.poster, description: serial.description, seasons: serial.seasons }));
+            xhr.send(JSON.stringify({ name: serial.name, original: serial.original, id_genre: serial.id_genre, year: serial.year, age: serial.age, timing: serial.timing, serial: serial.original, id_country: serial.id_country, poster: serial.poster, description: serial.description, seasons: serial.seasons }));
         }
     }
     // удаление объекта

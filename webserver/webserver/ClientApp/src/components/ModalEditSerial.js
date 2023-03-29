@@ -78,6 +78,7 @@ export class ModalEdit extends React.Component { //класс модальног
         if (!serialName || !serialDescription || !serialTiming || !serialGenre || !serialCountry || !serialAge || !serialYear || !serialSeasons) {
             return;
         }
+        alert(serialOriginal);
         this.props.onFilmSubmit({ id: serialId, name: serialName, description: serialDescription, timing: serialTiming, id_genre: serialGenre, id_country: serialCountry, poster: serialPoster, year: serialYear, age: serialAge, original: serialOriginal, seasons: serialSeasons });
         this.toggle();
     }

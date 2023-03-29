@@ -53,9 +53,10 @@ export class Authorisation extends Component {
         });
         // получаем данные 
         const data = await response.json();
+
         if (response.ok === true) {
             // сохраняем в хранилище sessionStorage токен доступа
-            sessionStorage.setItem('tokenKey', data.accessToken);
+            sessionStorage.setItem('accessToken', data.access_token);
             window.location.reload();
         }
         else {
@@ -67,7 +68,7 @@ export class Authorisation extends Component {
 
     render() {
         return (
-            <div>
+            <div style={ { marginRight: 300 + 'px', marginLeft: 300 + 'px' } }>
                 <div className="loginBody">
                     <form onSubmit={this.onSubmit}>
                         <Alert color="danger" isOpen={this.state.alertVisible} toggle={() => { this.onChangeAlert(false) }} fade={false}>Неверный логин или пароль!</Alert >

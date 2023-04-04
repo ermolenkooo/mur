@@ -31,5 +31,21 @@ namespace webserver.Controllers
             
             return Json(response);
         }
+
+        [HttpGet]
+        public IActionResult GetUser([FromBody] UserModel user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            myIdentity = new Identity();
+            var u = myIdentity.LoginUser(user);
+            if (u == null)
+            {
+                return NotFound();
+            }
+            return Ok(u);
+        }
     }
 }

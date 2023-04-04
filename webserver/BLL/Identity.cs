@@ -46,6 +46,12 @@ namespace BLL
             return encodedJwt;
         }
 
+        public UserModel LoginUser(UserModel u)
+        {
+            List<UserModel> users = db.Users.GetList().Select(i => new UserModel(i)).ToList();
+            return users.Find(x => x.Email == u.Email && x.Password == u.Password);
+        }
+
         public ClaimsIdentity GetIdentity(string username, string password, string role)
         {
             if (role == "admin")
@@ -57,24 +63,6 @@ namespace BLL
                     var claims = new List<Claim>
                 {
                     new Claim(ClaimsIdentity.DefaultNameClaimType, person.Name),
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, role)
-                };
-                    claimsIdentity =
-                    new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
-                        ClaimsIdentity.DefaultRoleClaimType);
-                    return claimsIdentity;
-                }
-            }
-
-            if (role == "user")
-            {
-                List<UserModel> users = db.Users.GetList().Select(i => new UserModel(i)).ToList();
-                var person = users.Find(x => x.Email == username && x.Password == password);
-                if (person != null)
-                {
-                    var claims = new List<Claim>
-                {
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, person.Email),
                     new Claim(ClaimsIdentity.DefaultRoleClaimType, role)
                 };
                     claimsIdentity =

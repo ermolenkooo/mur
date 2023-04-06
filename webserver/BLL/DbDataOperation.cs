@@ -351,9 +351,9 @@ namespace BLL
         {
             return new UserModel(db.Users.GetItem(Id));
         }
-        public void CreateUser(UserModel u) //добавление нового пользователя
+        public User CreateUser(UserModel u) //добавление нового пользователя
         {
-            db.Users.Create(new User()
+            var user = db.Users.Create(new User()
             {
                 Name = u.Name,
                 Email = u.Email,
@@ -361,6 +361,7 @@ namespace BLL
                 Photo = u.Photo
             });
             Save();
+            return user;
         }
         public void UpdateUser(UserModel u) //обновление пользователя
         {

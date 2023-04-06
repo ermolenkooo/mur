@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DAL.Repositories
 {
@@ -18,11 +19,9 @@ namespace DAL.Repositories
             this.db = dbcontext;
         }
 
-        public List<Film> GetList() //получение списка фильмов
+        public List<Film> GetList() //получение списка
         {
-            List<Film> films = db.Film.ToList();
-            //db.Dispose();
-            return films;
+            return db.Film.ToList();
         }
 
         public Film GetItem(int id) //получение фильма по id

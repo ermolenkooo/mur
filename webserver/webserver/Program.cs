@@ -20,6 +20,8 @@ namespace webserver
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    /*webBuilder.UseUrls("https://*:5566");
+                    webBuilder.UseIISIntegration();*/
                     webBuilder.UseStartup<Startup>();
                 });
     }

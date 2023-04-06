@@ -42,14 +42,14 @@ namespace webserver.Controllers
             return NoContent();
         }
 
-        [HttpGet("{id}")]
-        public IEnumerable<LetterModel> GetAllLettersOfUser([FromRoute] int id) //получение списка
+        [HttpGet("/lettersOfUser")]
+        public IEnumerable<LetterModel> GetAllLettersOfUser([FromBody] int id) //получение списка
         {
             return crudServ.GetAllLettersOfUser(id);
         }
 
-        [HttpGet("{id}")]
-        public IEnumerable<LetterModel> GetAllLettersOfFilm([FromRoute] int id) //получение списка
+        [HttpGet("/lettersOfFilm")]
+        public IEnumerable<LetterModel> GetAllLettersOfFilm([FromBody] int id) //получение списка
         {
             return crudServ.GetAllLettersOfFilm(id);
         }

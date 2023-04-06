@@ -3,6 +3,8 @@ using DAL.Interfaces;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
@@ -17,9 +19,7 @@ namespace DAL.Repositories
 
         public List<Admin> GetList() //получение списка
         {
-            List<Admin> admins = db.Admin.ToList();
-            //db.Dispose();
-            return admins;
+            return db.Admin.ToList();
         }
 
         public Admin GetItem(int id) //получение по id

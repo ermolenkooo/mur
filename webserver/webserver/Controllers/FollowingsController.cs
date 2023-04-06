@@ -42,14 +42,14 @@ namespace webserver.Controllers
             return NoContent();
         }
 
-        [HttpGet("{id}")]
-        public IEnumerable<FollowingModel> GetFollowingsOfUser([FromRoute] int id) //получение списка
+        [HttpGet("/following")]
+        public IEnumerable<FollowingModel> GetFollowingsOfUser([FromBody] int id) //получение списка
         {
             return crudServ.GetAllFollowings(id);
         }
 
-        [HttpGet("{id}")]
-        public IEnumerable<FollowingModel> GetFollowersOfUser([FromRoute] int id) //получение списка
+        [HttpGet("/followers")]
+        public IEnumerable<FollowingModel> GetFollowersOfUser([FromBody] int id) //получение списка
         {
             return crudServ.GetAllFollowers(id);
         }

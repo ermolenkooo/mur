@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DAL.Repositories
 {
@@ -20,9 +21,7 @@ namespace DAL.Repositories
 
         public List<Mark> GetList() //получение списка
         {
-            List<Mark> marks = db.Mark.ToList();
-            //db.Dispose();
-            return marks;
+            return db.Mark.ToList();
         }
 
         public Mark GetItem(int id) //получение по id

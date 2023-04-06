@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DAL.Repositories
 {
@@ -20,9 +21,7 @@ namespace DAL.Repositories
 
         public List<Country> GetList() //получение списка
         {
-            List<Country> countries = db.Country.ToList();
-            //db.Dispose();
-            return countries;
+            return db.Country.ToList();
         }
 
         public Country GetItem(int id) //получение по id

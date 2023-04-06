@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DAL.Repositories
 {
@@ -20,9 +21,7 @@ namespace DAL.Repositories
 
         public List<Genre> GetList() //получение списка
         {
-            List<Genre> genres = db.Genre.ToList();
-            //db.Dispose();
-            return genres;
+            return db.Genre.ToList();
         }
 
         public Genre GetItem(int id) //получение по id

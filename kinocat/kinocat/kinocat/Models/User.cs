@@ -9,8 +9,8 @@ namespace kinocat.Models
     public class User : INotifyPropertyChanged
     {
         public int id;
-        public string username;
-        public string image;
+        public string name;
+        public string photo;
         public string email;
         public string password;
         public bool readMe;
@@ -27,23 +27,23 @@ namespace kinocat.Models
             }
         }
 
-        public string Username
+        public string Name
         {
-            get { return username; }
+            get { return name; }
             set
             {
-                username = value;
-                OnPropertyChanged("Username");
+                name = value;
+                OnPropertyChanged("Name");
             }
         }
 
-        public string Image
+        public string Photo
         {
-            get { return image; }
+            get { return photo; }
             set
             {
-                image = value;
-                OnPropertyChanged("Image");
+                photo = value;
+                OnPropertyChanged("Photo");
             }
         }
 

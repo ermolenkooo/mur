@@ -32,7 +32,7 @@ namespace webserver.Controllers
             return Json(response);
         }
 
-        [HttpGet]
+        [HttpPost("/login")]
         public IActionResult GetUser([FromBody] UserModel user)
         {
             if (!ModelState.IsValid)

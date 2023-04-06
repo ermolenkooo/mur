@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DAL.Repositories
 {
@@ -20,9 +21,7 @@ namespace DAL.Repositories
 
         public List<Serial> GetList() //получение списка
         {
-            List<Serial> serials = db.Serial.ToList();
-            //db.Dispose();
-            return serials;
+            return db.Serial.ToList();
         }
 
         public Serial GetItem(int id) //получение по id

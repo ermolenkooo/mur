@@ -1,9 +1,11 @@
 ﻿using BLL.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Entities;
 
 namespace BLL.Interfaces
 {
@@ -57,7 +59,7 @@ namespace BLL.Interfaces
         void DeleteSerial(int id); //удаление сериала
 
         UserModel GetUser(int Id); //получение пользователя по id
-        void CreateUser(UserModel u); //добавление нового пользователя
+        User CreateUser(UserModel u); //добавление нового пользователя
         void UpdateUser(UserModel u); //обновление пользователя
         void DeleteUser(int id); //удаление пользователя
 

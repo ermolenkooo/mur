@@ -1,9 +1,15 @@
 ﻿using kinocat.Models;
+using kinocat.Services;
 using kinocat.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using System.Net.Http;
+using System.Net;
+using System.Text.Json;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace kinocat.ViewModels
 {
@@ -17,6 +23,7 @@ namespace kinocat.ViewModels
         private string warning;
 
         public INavigation Navigation { get; set; }
+        UsersService usersService = new UsersService();
 
         public LoginViewModel()
         {
@@ -62,19 +69,16 @@ namespace kinocat.ViewModels
             }
         }
 
-        private void OnLoginClicked(object obj)
+        private async void OnLoginClicked(object obj)
         {
-            /*var u = App.Database.GetUsers();
-            foreach (var user in u)
+            User u = new User { Email = Email, Password = Password };
+            var user = await usersService.Login(u);
+            if (user == null)
+                Warning = "Неверный логин и/или пароль!";
+            else
             {
-                if (user.Email == Email && user.Password == Password)
-                {
-                    User myuser = new User { Email = user.Email, Image = user.Image, Username = user.Username, Id = user.Id };
-                    Navigation.PushAsync(new ProfilPage(myuser));
-                    return;
-                }
-            }*/
-            Warning = "Неверный логин и/или пароль!";
+                //Navigation.PushAsync(new ProfilPage(myuser));
+            }
         }
 
         private void OnRegClicked(object obj)

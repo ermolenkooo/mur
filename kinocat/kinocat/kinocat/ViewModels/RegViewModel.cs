@@ -1,4 +1,5 @@
 ﻿using kinocat.Models;
+using kinocat.Services;
 using kinocat.Views;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace kinocat.ViewModels
         private string base64;
 
         public INavigation Navigation { get; set; }
+        UsersService usersService = new UsersService();
 
         public RegViewModel()
         {
@@ -100,9 +102,9 @@ namespace kinocat.ViewModels
             Navigation.PushAsync(new LoginPage());
         }
 
-        private void OnRegClicked(object obj)
+        private async void OnRegClicked(object obj)
         {
-            /*var users = App.Database.GetUsers();
+            var users = await usersService.Get();
             foreach (var u in users)
             {
                 if (Email == null || Username == null || Password == null)
@@ -115,27 +117,17 @@ namespace kinocat.ViewModels
                     Warning = "На данный e-mail уже зарегистрирован аккаунт!";
                     return;
                 }
-                else if (Username == u.Username)
+                else if (Username == u.Name)
                 {
                     Warning = "Данное имя пользователя уже используется!";
                     return;
                 }
             }
-            UserDB userdb = new UserDB { Email = Email, Password = Password, Username = Username, Image = File };
-            App.Database.SaveUser(userdb);
-            users = App.Database.GetUsers();
-            foreach (var u in users)
-            {
-                if (u.Username == Username)
-                {
-                    User user = new User { Email = Email, Password = Password, Username = Username, Image = File, Id = u.Id };
-                    Navigation.PushAsync(new ProfilPage(user));
-                    break;
-                }
-            }*/
+            User newuser = new User { Email = Email, Password = Password, Name = Username, Photo = base64 };
+            //Navigation.PushAsync(new ProfilPage(user));
         }
 
-        private async void OnFileClicked(object obj) ////////////////////////////////
+        private async void OnFileClicked(object obj)
         {
             var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
             {

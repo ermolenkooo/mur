@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DAL.Repositories
 {
@@ -20,9 +21,7 @@ namespace DAL.Repositories
 
         public List<Love> GetList() //получение списка
         {
-            List<Love> loves = db.Love.ToList();
-            //db.Dispose();
-            return loves;
+            return db.Love.ToList();
         }
 
         public Love GetItem(int id) //получение по id

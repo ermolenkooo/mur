@@ -189,9 +189,9 @@ namespace BLL
             });
             Save();
         }
-        public void DeleteFollowing(int id) //отписка
+        public void DeleteFollowing(int followerid, int followingid) //отписка
         {
-            Following f = db.Followings.GetItem(id);
+            var f = db.Followings.GetList().Where(x => x.Id_follower == followerid && x.Id_following == followingid).First();
             if (f != null)
             {
                 db.Followings.Delete(f.Id);

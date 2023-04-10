@@ -31,25 +31,25 @@ namespace webserver.Controllers
         }
 
         //[Authorize(Roles = "admin")]
-        [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id) //удаление
+        [HttpDelete("{followerid}/{followingid}")]
+        public IActionResult Delete([FromRoute] int followerid, int followingid) //удаление
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            crudServ.DeleteFollowing(id);
+            crudServ.DeleteFollowing(followerid, followingid);
             return NoContent();
         }
 
-        [HttpGet("/following")]
-        public IEnumerable<FollowingModel> GetFollowingsOfUser([FromBody] int id) //получение списка
+        [HttpGet("following/{id}")]
+        public IEnumerable<FollowingModel> GetFollowingsOfUser([FromRoute] int id) //получение списка
         {
             return crudServ.GetAllFollowings(id);
         }
 
-        [HttpGet("/followers")]
-        public IEnumerable<FollowingModel> GetFollowersOfUser([FromBody] int id) //получение списка
+        [HttpGet("followers/{id}")]
+        public IEnumerable<FollowingModel> GetFollowersOfUser([FromRoute] int id) //получение списка
         {
             return crudServ.GetAllFollowers(id);
         }

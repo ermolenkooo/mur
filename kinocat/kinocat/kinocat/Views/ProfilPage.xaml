@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="kinocat.Views.ProfilPage"
+             Background="white">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="0.75*"/>
+            </Grid.RowDefinitions>
+            <StackLayout HorizontalOptions="Center">
+                <StackLayout Orientation="Horizontal" Margin="0, 30, 0, 0">
+                    <Image WidthRequest="180" Source="{Binding User.Source}"/>
+                    <StackLayout VerticalOptions="Center">
+                        <Button Margin="20, 0, 0, 5" Padding="50, 5" Command="{Binding FollowCommand}" BackgroundColor="Gray" CornerRadius="60" BorderColor="Black" BorderWidth="1">
+                            <Button.Triggers>
+                                <DataTrigger Binding="{Binding IsMe}" Value="true" TargetType="Button">
+                                    <Setter Property="IsVisible" Value="false"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsMe}" Value="false" TargetType="Button">
+                                    <Setter Property="IsVisible" Value="true"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding User.ReadMe}" Value="False" TargetType="Button">
+                                    <Setter Property="Background" Value="black" />
+                                    <Setter Property="ImageSource" Value="checkmark1.png"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding User.ReadMe}" Value="True" TargetType="Button">
+                                    <Setter Property="Background" Value="white" />
+                                    <Setter Property="ImageSource" Value="checkmark.png"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                        <Button Text="Статистика" TextColor="Black" Background="white" Margin="20, 5, 0, 0" Command="{Binding StatCommand}" CornerRadius="60" BorderColor="Black" BorderWidth="1">
+                            <Button.Triggers>
+                                <DataTrigger Binding="{Binding IsMe}" Value="true" TargetType="Button">
+                                    <Setter Property="IsVisible" Value="true"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsMe}" Value="false" TargetType="Button">
+                                    <Setter Property="IsVisible" Value="false"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </StackLayout>
+                </StackLayout>
+                <Label Text="{Binding User.Name}" FontSize="25" TextColor="Black" Margin="20, 0, 0, 0" FontAttributes="Bold"/>
+            </StackLayout>
+            
+            <Grid VerticalOptions="End" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FollowingCommand}"/>
+                        </StackLayout.GestureRecognizers>
+
+                        <Label Text="{Binding User.CountOfFollowing}" FontSize="22" TextColor="Black" FontAttributes="Bold"></Label>
+                        <Label Text="подписки" FontSize="22" TextColor="Black"></Label>
+                    </StackLayout>
+                    <Button BackgroundColor="#F5F5F5" Text="Фильмы" FontSize="24" TextColor="Black" TextTransform="None" Command="{Binding FilmOrSerialCommand}">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button" Binding="{Binding IsFilm}" Value="true">
+                                <Setter Property="FontAttributes" Value="Bold"/>
+                            </DataTrigger>
+                            <DataTrigger TargetType="Button" Binding="{Binding IsFilm}" Value="false">
+                                <Setter Property="FontAttributes" Value="None"/>
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+
+                    <Button ImageSource="marks.png" Margin="15, 10, 5, 0" TextTransform="None" TextColor="DarkSlateGray" FontSize="22" ContentLayout="Top, 15" Text="Оценки" Command="{Binding MarksCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
+                    <Button ImageSource="love1.png" Margin="15, 10, 5, 10" TextTransform="None" TextColor="DarkSlateGray" FontSize="22" ContentLayout="Top, 15" Text="Любимое" Command="{Binding LoveCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
+
+                    <ImageButton Source="fox2.png" BackgroundColor="#D9D9D9" WidthRequest="40" Padding="0" Command="{Binding MyProfilCommand}"/>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FollowersCommand}"/>
+                        </StackLayout.GestureRecognizers>
+
+                        <Label Text="{Binding User.CountOfFollowers}" FontSize="22" TextColor="Black" FontAttributes="Bold"></Label>
+                        <Label Text="подписчики" FontSize="22" TextColor="Black"></Label>
+                    </StackLayout>
+                    <Button BackgroundColor="#F5F5F5" Text="Сериалы" FontSize="24" TextColor="Black" TextTransform="None" Command="{Binding FilmOrSerialCommand}">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button" Binding="{Binding IsFilm}" Value="true">
+                                <Setter Property="FontAttributes" Value="None"/>
+                            </DataTrigger>
+                            <DataTrigger TargetType="Button" Binding="{Binding IsFilm}" Value="false">
+                                <Setter Property="FontAttributes" Value="Bold"/>
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+
+                    <Button ImageSource="watchlist1.png" Margin="5, 10, 15, 0" TextTransform="None" TextColor="DarkSlateGray" FontSize="22" ContentLayout="Top, 15" Text="Watchlist" Command="{Binding WatchlistCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
+                    <Button ImageSource="letters1.png" Margin="5, 10, 15, 10" TextTransform="None" TextColor="DarkSlateGray" FontSize="22" ContentLayout="Top, 15" Text="Рецензии" Command="{Binding LettersCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
+
+                    <ImageButton Source="search.png" BackgroundColor="#D9D9D9" WidthRequest="50" Padding="12" Command="{Binding SearchCommand}" />
+
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

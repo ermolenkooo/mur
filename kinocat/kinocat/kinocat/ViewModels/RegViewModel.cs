@@ -3,6 +3,7 @@ using kinocat.Services;
 using kinocat.Views;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -124,7 +125,11 @@ namespace kinocat.ViewModels
                 }
             }
             User newuser = new User { Email = Email, Password = Password, Name = Username, Photo = base64 };
-            //Navigation.PushAsync(new ProfilPage(user));
+            byte[] Base64Stream = Convert.FromBase64String(base64);
+            newuser.Source = ImageSource.FromStream(() => new MemoryStream(Base64Stream));
+            await usersService.Add(newuser);
+            var user = await usersService.Login(newuser);
+            await Navigation.PushAsync(new ProfilPage(user, user));
         }
 
         private async void OnFileClicked(object obj)
@@ -135,9 +140,9 @@ namespace kinocat.ViewModels
             });
 
             File = result.FileName;
-            string base64ImageRepresentation = "data:image/jpeg;base64,";
+            string base64ImageRepresentation/* = "data:image/jpeg;base64,"*/;
             byte[] imageArray = System.IO.File.ReadAllBytes(result.FullPath);
-            base64ImageRepresentation += Convert.ToBase64String(imageArray);
+            base64ImageRepresentation = Convert.ToBase64String(imageArray);
             base64 = base64ImageRepresentation;
         }
     }

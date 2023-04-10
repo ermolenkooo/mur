@@ -77,7 +77,7 @@ namespace kinocat.ViewModels
                 Warning = "Неверный логин и/или пароль!";
             else
             {
-                //Navigation.PushAsync(new ProfilPage(myuser));
+                await Navigation.PushAsync(new ProfilPage(user, user));
             }
         }
 

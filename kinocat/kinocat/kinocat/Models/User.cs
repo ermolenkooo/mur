@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace kinocat.Models
 {
@@ -16,6 +17,8 @@ namespace kinocat.Models
         public bool readMe;
         public int countOfFollowers;
         public int countOfFollowing;
+        ImageSource source;
+        public bool isMe;
 
         public int Id
         {
@@ -24,6 +27,19 @@ namespace kinocat.Models
             {
                 id = value;
                 OnPropertyChanged("Id");
+            }
+        }
+
+        public bool IsMe
+        {
+            get { return isMe; }
+            set
+            {
+                if (isMe != value)
+                {
+                    isMe = value;
+                    OnPropertyChanged("IsMe");
+                }
             }
         }
 
@@ -94,6 +110,16 @@ namespace kinocat.Models
             {
                 countOfFollowing = value;
                 OnPropertyChanged("CountOfFollowing");
+            }
+        }
+
+        public ImageSource Source
+        {
+            get { return source; }
+            set
+            {
+                source = value;
+                OnPropertyChanged("Source");
             }
         }
 

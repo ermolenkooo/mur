@@ -38,7 +38,7 @@ namespace BLL.Interfaces
         CountryModel GetCountry(int Id); //получение страны по id
 
         void CreateFollowing(FollowingModel f); //подписка
-        void DeleteFollowing(int id); //отписка
+        void DeleteFollowing(int followerid, int followingid); //отписка
 
         GenreModel GetGenre(int Id); //получение жанра по id
 

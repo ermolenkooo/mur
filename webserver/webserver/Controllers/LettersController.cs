@@ -31,25 +31,25 @@ namespace webserver.Controllers
         }
 
         //[Authorize(Roles = "admin")]
-        [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id) //удаление
+        [HttpDelete("{userid}/{filmid}")]
+        public IActionResult Delete([FromRoute] int userid, int filmid) //удаление
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            crudServ.DeleteLetter(id);
+            crudServ.DeleteLetter(userid, filmid);
             return NoContent();
         }
 
-        [HttpGet("/lettersOfUser")]
-        public IEnumerable<LetterModel> GetAllLettersOfUser([FromBody] int id) //получение списка
+        [HttpGet("lettersofuser/{id}")]
+        public IEnumerable<LetterModel> GetAllLettersOfUser([FromRoute] int id) //получение списка
         {
             return crudServ.GetAllLettersOfUser(id);
         }
 
-        [HttpGet("/lettersOfFilm")]
-        public IEnumerable<LetterModel> GetAllLettersOfFilm([FromBody] int id) //получение списка
+        [HttpGet("lettersoffilm/{id}")]
+        public IEnumerable<LetterModel> GetAllLettersOfFilm([FromRoute] int id) //получение списка
         {
             return crudServ.GetAllLettersOfFilm(id);
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace kinocat.Models
 {
@@ -19,6 +20,7 @@ namespace kinocat.Models
         string age;
         string timing;
         string original;
+        ImageSource source;
 
         public int Id
         {
@@ -127,6 +129,16 @@ namespace kinocat.Models
             {
                 original = value;
                 OnPropertyChanged("Original");
+            }
+        }
+
+        public ImageSource Source
+        {
+            get { return source; }
+            set
+            {
+                source = value;
+                OnPropertyChanged("Source");
             }
         }
 

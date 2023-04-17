@@ -31,14 +31,14 @@ namespace webserver.Controllers
         }
 
         //[Authorize(Roles = "admin")]
-        [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id) //удаление
+        [HttpDelete("{userid}/{filmid}")]
+        public IActionResult Delete([FromRoute] int userid, int filmid) //удаление
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            crudServ.DeleteWatchlist(id);
+            crudServ.DeleteWatchlist(userid, filmid);
             return NoContent();
         }
 

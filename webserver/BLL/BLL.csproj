@@ -442,9 +442,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthOptions.cs" />
-    <Compile Include="DbDataOperation.cs" />
-    <Compile Include="Identity.cs" />
+    <Compile Include="Authorisation\AuthOptions.cs" />
+    <Compile Include="Operations\DbDataOperation.cs" />
+    <Compile Include="Authorisation\Identity.cs" />
     <Compile Include="Interfaces\IDbCrud.cs" />
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
@@ -467,6 +467,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

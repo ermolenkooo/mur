@@ -43,10 +43,10 @@ namespace BLL.Interfaces
         GenreModel GetGenre(int Id); //получение жанра по id
 
         void CreateLetter(LetterModel l); //добавление новой рецензии
-        void DeleteLetter(int id); //удаление рецензии фильма
+        void DeleteLetter(int userid, int filmid); //удаление рецензии фильма
 
         void CreateLove(LoveModel l); //добавление фильма в любимое
-        void DeleteLove(int id); //удаление фильма из любимого
+        void DeleteLove(int userid, int filmid); //удаление фильма из любимого
 
         MarkModel GetMark(int Id); //получение оценки фильма по id
         void CreateMark(MarkModel m); //добавление новой оценки фильма
@@ -64,6 +64,6 @@ namespace BLL.Interfaces
         void DeleteUser(int id); //удаление пользователя
 
         void CreateWatchlist(WatchlistModel w); //добавление нового фильма в вотчлист
-        void DeleteWatchlist(int id); //удаление фильма из вотчлиста
+        void DeleteWatchlist(int userid, int filmid); //удаление фильма из вотчлиста
     }
 }

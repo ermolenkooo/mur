@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BLL.AuthOptions">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQRAAAAAQAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorisation\AuthOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Identity">
+    <Position X="4.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAkAAAAQAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Authorisation\Identity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.DbDataOperation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAKAgJ4EBQAZUoCENEFAAAQAIRAEACQgEQQwABEAAAA=</HashCode>
+      <FileName>Operations\DbDataOperation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BLL.Models.AdminModel">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AdminModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.CountryModel">
+    <Position X="6" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CountryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.FilmModel">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAgAAAAAEAAAAQAAAAEEAAEAACAAAQAAAQ=</HashCode>
+      <FileName>Models\FilmModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.FollowingModel">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\FollowingModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.GenreModel">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GenreModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.LetterModel">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAACCAAAQA=</HashCode>
+      <FileName>Models\LetterModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.LoveModel">
+    <Position X="2.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Models\LoveModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.MarkModel">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAACAACAAAQA=</HashCode>
+      <FileName>Models\MarkModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.SerialModel">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SerialModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.UserModel">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAACAAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Models.WatchlistModel">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Models\WatchlistModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BLL.Interfaces.IDbCrud" Collapsed="true">
+    <Position X="7.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAKAgB4EBQAJUoCENEFAAAQAIRAEACQgEQQwABEAAAA=</HashCode>
+      <FileName>Interfaces\IDbCrud.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

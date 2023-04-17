@@ -31,6 +31,7 @@ namespace DAL.Repositories
 
         public Film Create(Film f) //добавление нового фильма
         {
+            f.Mark = 0;
             return db.Film.Add(f).Entity;
         }
 

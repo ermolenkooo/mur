@@ -18,18 +18,21 @@ namespace BLL.Models
 
         public SerialModel(Serial s, Film f)
         {
-            Id = s.Id;
-            Name = f.Name;
-            Id_genre = f.Id_genre;
-            Id_country = f.Id_country;
-            Timing = f.Timing;
-            Description = f.Description;
-            Poster = f.Poster;
-            Year = f.Year;
-            Age = f.Age;
-            Original = f.Original;
-            Mark = f.Mark;
-            Seasons = s.Seasons;
+            if (s != null)
+            {
+                Id = s.Id;
+                Name = f.Name;
+                Id_genre = f.Id_genre;
+                Id_country = f.Id_country;
+                Timing = f.Timing;
+                Description = f.Description;
+                Poster = f.Poster;
+                Year = f.Year;
+                Age = f.Age;
+                Original = f.Original;
+                Mark = f.Mark;
+                Seasons = s.Seasons;
+            }
         }
     }
 }

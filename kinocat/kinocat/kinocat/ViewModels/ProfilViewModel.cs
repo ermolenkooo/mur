@@ -129,9 +129,15 @@ namespace kinocat.ViewModels
         private async void OnFollowClicked(object obj)
         {
             if (User.ReadMe)
+            {
                 await followersService.Delete(AuthoUser.Id, User.Id);
+                User.CountOfFollowers--;
+            }
             else
+            {
                 await followersService.Add(new Following { Id_follower = AuthoUser.Id, Id_following = User.Id });
+                User.CountOfFollowers++;
+            }
             User.ReadMe = !User.ReadMe;
         }
 
@@ -157,7 +163,10 @@ namespace kinocat.ViewModels
 
         private void OnWatchlistClicked(object obj)
         {
-            //Navigation.PushAsync(new WatchlistPage(User, User, false));
+            if (isFilm)
+                Navigation.PushAsync(new WatchlistPage(User, authoUser, "Фильмы"));
+            else
+                Navigation.PushAsync(new WatchlistPage(User, authoUser, "Сериалы"));
         }
 
         private void OnLoveClicked(object obj)

@@ -63,14 +63,14 @@ namespace webserver.Controllers
             return NoContent();
         }
 
-        [HttpGet("/marksOfUser")]
-        public IEnumerable<MarkModel> GetAllMarksOfUser([FromBody] int id) //получение списка
+        [HttpGet("marksofuser/{id}")]
+        public IEnumerable<MarkModel> GetAllMarksOfUser([FromRoute] int id) //получение списка
         {
             return crudServ.GetAllMarksOfUser(id);
         }
 
-        [HttpGet("/marksOfFilm")]
-        public IEnumerable<MarkModel> GetAllMarksOfFilm([FromBody] int id) //получение списка
+        [HttpGet("marksoffilm/{id}")]
+        public IEnumerable<MarkModel> GetAllMarksOfFilm([FromRoute] int id) //получение списка
         {
             return crudServ.GetAllMarksOfFilm(id);
         }

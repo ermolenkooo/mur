@@ -3,6 +3,7 @@ using BLL.Models;
 using DAL.Entities;
 using DAL.Interfaces;
 using DAL.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -215,9 +216,9 @@ namespace BLL
             });
             Save();
         }
-        public void DeleteLetter(int id) //удаление рецензии фильма
+        public void DeleteLetter(int userid, int filmid) //удаление рецензии фильма
         {
-            Letter l = db.Letters.GetItem(id);
+            var l = db.Letters.GetList().Where(x => x.Id_user == userid && x.Id_film == filmid).First();
             if (l != null)
             {
                 db.Letters.Delete(l.Id);
@@ -234,9 +235,9 @@ namespace BLL
             });
             Save();
         }
-        public void DeleteLove(int id) //удаление фильма из любимого
+        public void DeleteLove(int userid, int filmid) //удаление фильма из любимого
         {
-            Love l = db.Loves.GetItem(id);
+            var l = db.Loves.GetList().Where(x => x.Id_user == userid && x.Id_film == filmid).First();
             if (l != null)
             {
                 db.Loves.Delete(l.Id);
@@ -279,7 +280,10 @@ namespace BLL
 
         public SerialModel GetSerial(int Id) //получение сериала по id
         {
-            return new SerialModel(db.Serials.GetItem(Id), db.Films.GetItem(Id));
+            if (db.Serials.GetItem(Id) == null)
+                return null;
+            else
+                return new SerialModel(db.Serials.GetItem(Id), db.Films.GetItem(Id));
         }
         public void CreateSerial(SerialModel s) //добавление нового сериала
         {
@@ -407,9 +411,9 @@ namespace BLL
             });
             Save();
         }
-        public void DeleteWatchlist(int id) //удаление фильма из вотчлиста
+        public void DeleteWatchlist(int userid, int filmid) //удаление фильма из вотчлиста
         {
-            Watchlist w = db.Watchlists.GetItem(id);
+            var w = db.Watchlists.GetList().Where(x => x.Id_user == userid && x.Id_film == filmid).First();
             if (w != null)
             {
                 db.Watchlists.Delete(w.Id);

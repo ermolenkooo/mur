@@ -20,6 +20,7 @@ namespace kinocat.Models
         string age;
         string timing;
         string original;
+        string time;
         ImageSource source;
 
         public int Id
@@ -119,6 +120,16 @@ namespace kinocat.Models
             {
                 timing = value;
                 OnPropertyChanged("Timing");
+            }
+        }
+
+        public string Time
+        {
+            get { return time; }
+            set
+            {
+                time = value;
+                OnPropertyChanged("Time");
             }
         }
 

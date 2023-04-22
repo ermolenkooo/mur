@@ -158,7 +158,10 @@ namespace kinocat.ViewModels
 
         private void OnMarksClicked(object obj)
         {
-            //Navigation.PushAsync(new MarksPage(User, User, false));
+            if (isFilm)
+                Navigation.PushAsync(new MarksPage(User, authoUser, "Фильмы"));
+            else
+                Navigation.PushAsync(new MarksPage(User, authoUser, "Сериалы"));
         }
 
         private void OnWatchlistClicked(object obj)

@@ -13,7 +13,7 @@ using static System.Net.WebRequestMethods;
 
 namespace kinocat.ViewModels
 {
-    public class MarksViewModel : BaseViewModel
+    public class LoveViewModel : BaseViewModel
     {
         public Command SearchCommand { get; }
         public Command MyProfilCommand { get; }
@@ -25,6 +25,7 @@ namespace kinocat.ViewModels
         User user, authoUser;
         string type;
         MarksService marksService = new MarksService();
+        LovesService lovesService = new LovesService();
         FilmsService filmsService = new FilmsService();
         SerialsService serialsService = new SerialsService();
 
@@ -95,7 +96,7 @@ namespace kinocat.ViewModels
             }
         }
 
-        public MarksViewModel(User u, User authorizeUser, string type)
+        public LoveViewModel(User u, User authorizeUser, string type)
         {
             Type = type;
             AuthoUser = authorizeUser;
@@ -123,13 +124,16 @@ namespace kinocat.ViewModels
         private async void GetData()
         {
             var marks = await marksService.GetMarksOfUser(User.Id);
+            var loves = await lovesService.Get(User.Id);
             if (Type == "Фильмы")
             {
-                foreach (var m in marks)
+                foreach (var l in loves)
                 {
-                    if (await serialsService.GetID(m.Id_film) == null)
+                    if (await serialsService.GetID(l.Id_film) == null)
                     {
-                        Film f = await filmsService.GetID(m.Id_film);
+                        MarkOfUser m = new MarkOfUser();
+                        m = marks.Where(x => x.Id_film == l.Id_film).FirstOrDefault();
+                        Film f = await filmsService.GetID(l.Id_film);
                         f.Poster = f.Poster.Replace("data:image/jpeg;base64,", "");
                         byte[] Base64Stream = Convert.FromBase64String(f.Poster);
                         films.Add(new Serial
@@ -153,11 +157,13 @@ namespace kinocat.ViewModels
             }
             else
             {
-                foreach (var m in marks)
+                foreach (var l in loves)
                 {
-                    if (await serialsService.GetID(m.Id_film) != null)
+                    if (await serialsService.GetID(l.Id_film) != null)
                     {
-                        Serial s = await serialsService.GetID(m.Id_film);
+                        MarkOfUser m = new MarkOfUser();
+                        m = marks.Where(x => x.Id_film == l.Id_film).FirstOrDefault();
+                        Serial s = await serialsService.GetID(l.Id_film);
                         s.Poster = s.Poster.Replace("data:image/jpeg;base64,", "");
                         byte[] Base64Stream = Convert.FromBase64String(s.Poster);
                         s.Source = ImageSource.FromStream(() => new MemoryStream(Base64Stream));

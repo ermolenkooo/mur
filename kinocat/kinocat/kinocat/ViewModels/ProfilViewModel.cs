@@ -174,7 +174,10 @@ namespace kinocat.ViewModels
 
         private void OnLoveClicked(object obj)
         {
-            //Navigation.PushAsync(new LovePage(User, User, false));
+            if (isFilm)
+                Navigation.PushAsync(new LovePage(User, authoUser, "Фильмы"));
+            else
+                Navigation.PushAsync(new LovePage(User, authoUser, "Сериалы"));
         }
 
         private void OnLettersClicked(object obj)

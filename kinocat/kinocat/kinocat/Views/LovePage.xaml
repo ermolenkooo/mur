@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="kinocat.Views.MarksPage"
-             BackgroundColor="white">
+             x:Class="kinocat.Views.LovePage"
+             BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center">
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">
-                <Label Text="Оценки" FontSize="30" TextColor="White" Margin="10, 5"></Label>
+                <Label Text="Любимое" FontSize="30" TextColor="White" Margin="10, 5"></Label>
             </StackLayout>
             <ScrollView>
                 <ListView x:Name="filmsList" ItemsSource="{Binding Films}" SelectedItem="{Binding SelectedFilm, Mode=TwoWay}" HasUnevenRows="True">
@@ -16,7 +16,7 @@
                                 <ViewCell.View>
                                     <StackLayout Orientation="Horizontal" x:Name="Item" HorizontalOptions="Center">
                                         <Image Source="{Binding Source}" Margin="20,10,15,12" HeightRequest="180" />
-                                        <StackLayout VerticalOptions="End">
+                                        <StackLayout VerticalOptions="Center">
                                             <Label Text="{Binding Name}" TextColor="Black" WidthRequest="220" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                             <Image WidthRequest="220" HorizontalOptions="Center">
                                                 <Image.Triggers>
@@ -37,8 +37,6 @@
                                                     </DataTrigger>
                                                 </Image.Triggers>
                                             </Image>
-                                            <Label Text="" TextColor="Gray"  FontSize="20" FontAttributes="None" HorizontalTextAlignment="End"/>
-                                            <Label Text="{Binding Time}" TextColor="Gray"  FontSize="20" FontAttributes="None" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell.View>

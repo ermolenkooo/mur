@@ -11,7 +11,7 @@ namespace kinocat.Services
 {
     public class UsersService
     {
-        const string Url = "http://192.168.0.59:5000/api/Users/";
+        string Url = "http://" + App.ip + ":5000/api/Users/";
         // настройки для десериализации для нечувствительности к регистру символов
         JsonSerializerOptions options = new JsonSerializerOptions
         {
@@ -50,7 +50,7 @@ namespace kinocat.Services
 
         public async Task<User> Login(User user)
         {
-            var response = await App.client.PostAsync("http://192.168.0.59:5000/login",
+            var response = await App.client.PostAsync("http://" + App.ip + ":5000/login",
                 new StringContent(
                     JsonSerializer.Serialize(user),
                     Encoding.UTF8, "application/json"));

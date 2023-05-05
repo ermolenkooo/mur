@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace kinocat.Models
 {
@@ -13,6 +14,8 @@ namespace kinocat.Models
         int id_user;
         string text;
         DateTime time;
+        User user;
+        Serial film;
 
         public int Id
         {
@@ -61,6 +64,26 @@ namespace kinocat.Models
             {
                 time = value;
                 OnPropertyChanged("Time");
+            }
+        }
+
+        public User User
+        {
+            get { return user; }
+            set
+            {
+                user = value;
+                OnPropertyChanged("User");
+            }
+        }
+
+        public Serial Film
+        {
+            get { return film; }
+            set
+            {
+                film = value;
+                OnPropertyChanged("Film");
             }
         }
 

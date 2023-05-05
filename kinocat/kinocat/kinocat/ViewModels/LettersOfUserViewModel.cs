@@ -9,11 +9,10 @@ using System.Linq;
 using kinocat.Views;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
-using static System.Net.WebRequestMethods;
 
 namespace kinocat.ViewModels
 {
-    public class LoveViewModel : BaseViewModel
+    public class LettersOfUserViewModel : BaseViewModel
     {
         public Command SearchCommand { get; }
         public Command MyProfilCommand { get; }
@@ -22,10 +21,11 @@ namespace kinocat.ViewModels
 
         Serial selectedFilm;
         ObservableCollection<Serial> films;
+        IEnumerable<Letter> letters;
         User user, authoUser;
         string type;
         MarksService marksService = new MarksService();
-        LovesService lovesService = new LovesService();
+        LettersService lettersService = new LettersService();
         FilmsService filmsService = new FilmsService();
         SerialsService serialsService = new SerialsService();
 
@@ -88,15 +88,19 @@ namespace kinocat.ViewModels
             {
                 if (selectedFilm != value)
                 {
+                    //тут поиск нужной рецензии
                     Serial tempf = value;
                     selectedFilm = null;
                     OnPropertyChanged("SelectedFilm");
-                    //Navigation.PushAsync(new FilmPage(AuthoUser, film));
+                    Letter letter = letters.Where(x => x.Id_film == tempf.Id).First();
+                    letter.User = AuthoUser;
+                    letter.Film = tempf;
+                    Navigation.PushAsync(new LetterPage(AuthoUser, letter));
                 }
             }
         }
 
-        public LoveViewModel(User u, User authorizeUser, string type)
+        public LettersOfUserViewModel(User u, User authorizeUser, string type)
         {
             Type = type;
             AuthoUser = authorizeUser;
@@ -124,10 +128,10 @@ namespace kinocat.ViewModels
         private async void GetData()
         {
             var marks = await marksService.GetMarksOfUser(User.Id);
-            var loves = await lovesService.Get(User.Id);
+            letters = await lettersService.GetLettersOfUser(User.Id);
             if (Type == "Фильмы")
             {
-                foreach (var l in loves)
+                foreach (var l in letters)
                 {
                     if (await serialsService.GetID(l.Id_film) == null)
                     {
@@ -149,7 +153,7 @@ namespace kinocat.ViewModels
                             Timing = f.Timing,
                             Year = f.Year,
                             Mark = m.Mark,
-                            Time = m.Time.ToString("d"),
+                            Time = l.Time.ToString("d"),
                             Source = ImageSource.FromStream(() => new MemoryStream(Base64Stream))
                         });
                     }
@@ -157,7 +161,7 @@ namespace kinocat.ViewModels
             }
             else
             {
-                foreach (var l in loves)
+                foreach (var l in letters)
                 {
                     if (await serialsService.GetID(l.Id_film) != null)
                     {
@@ -168,7 +172,7 @@ namespace kinocat.ViewModels
                         byte[] Base64Stream = Convert.FromBase64String(s.Poster);
                         s.Source = ImageSource.FromStream(() => new MemoryStream(Base64Stream));
                         s.Mark = m.Mark;
-                        s.Time = m.Time.ToString("d");
+                        s.Time = l.Time.ToString("d");
                         films.Add(s);
                     }
                 }

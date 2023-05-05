@@ -11,7 +11,7 @@ namespace kinocat.Services
 {
     public class LettersService
     {
-        const string Url = "http://192.168.0.59:5000/api/Letters/";
+        string Url = "http://" + App.ip + ":5000/api/Letters/";
         // настройки для десериализации для нечувствительности к регистру символов
         JsonSerializerOptions options = new JsonSerializerOptions
         {

@@ -10,7 +10,7 @@ namespace kinocat.Services
 {
     public class CountriesService
     {
-        const string Url = "http://192.168.0.59:5000/api/Countries/"; // обращайте внимание на конечный слеш
+        string Url = "http://" + App.ip + ":5000/api/Countries/"; // обращайте внимание на конечный слеш
         // настройки для десериализации для нечувствительности к регистру символов
         JsonSerializerOptions options = new JsonSerializerOptions
         {

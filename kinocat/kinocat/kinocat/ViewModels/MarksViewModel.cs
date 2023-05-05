@@ -117,7 +117,7 @@ namespace kinocat.ViewModels
 
         private void OnSearchClicked(object obj)
         {
-            //Navigation.PushAsync(new SearchPage(User));
+            Navigation.PushAsync(new SearchPage(AuthoUser));
         }
 
         private async void GetData()

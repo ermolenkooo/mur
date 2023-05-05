@@ -24,7 +24,7 @@
                                         <Image Source="{Binding Source}" Margin="0,10,15,10" WidthRequest="110"/>
                                         <StackLayout>
                                             <Label Text="{Binding Name}" TextColor="Black"  FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Start" Margin="20,25,0,10"/>
-                                            <Button Margin="0, 0, 0, 25" Padding="100, 5" Command="{Binding Source={x:Reference followersList}, Path=BindingContext.ClickCommand}" CommandParameter="{Binding Id}" BackgroundColor="Gray" CornerRadius="60" BorderColor="Black" BorderWidth="1">
+                                            <Button Margin="0, 0, 0, 25" Padding="80, 5" Command="{Binding Source={x:Reference followersList}, Path=BindingContext.ClickCommand}" CommandParameter="{Binding Id}" BackgroundColor="Gray" CornerRadius="60" BorderColor="Black" BorderWidth="1">
                                                 <Button.Triggers>
                                                     <DataTrigger Binding="{Binding ReadMe}" Value="False" TargetType="Button">
                                                         <Setter Property="Background" Value="black" />

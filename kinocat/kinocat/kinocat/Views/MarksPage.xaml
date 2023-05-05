@@ -17,8 +17,8 @@
                                     <StackLayout Orientation="Horizontal" x:Name="Item" HorizontalOptions="Center">
                                         <Image Source="{Binding Source}" Margin="20,10,15,12" HeightRequest="180" />
                                         <StackLayout VerticalOptions="End">
-                                            <Label Text="{Binding Name}" TextColor="Black" WidthRequest="220" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                                            <Image WidthRequest="220" HorizontalOptions="Center">
+                                            <Label Text="{Binding Name}" TextColor="Black" WidthRequest="190" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                            <Image WidthRequest="190" HorizontalOptions="Center">
                                                 <Image.Triggers>
                                                     <DataTrigger Binding="{Binding Mark}" Value="1" TargetType="Image">
                                                         <Setter Property="Source" Value="m1.png" />

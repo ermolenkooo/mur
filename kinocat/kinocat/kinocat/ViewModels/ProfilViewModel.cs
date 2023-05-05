@@ -182,12 +182,15 @@ namespace kinocat.ViewModels
 
         private void OnLettersClicked(object obj)
         {
-            //Navigation.PushAsync(new LettersOfUserPage(User, User, false));
+            if (isFilm)
+                Navigation.PushAsync(new LettersOfUserPage(User, authoUser, "Фильмы"));
+            else
+                Navigation.PushAsync(new LettersOfUserPage(User, authoUser, "Сериалы"));
         }
 
         private void OnSearchClicked(object obj)
         {
-            //Navigation.PushAsync(new SearchPage(User));
+            Navigation.PushAsync(new SearchPage(User));
         }
     }
 }

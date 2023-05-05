@@ -10,6 +10,8 @@ namespace kinocat
     public partial class App : Application
     {
         static public HttpClient client;
+        static public string ip = "192.168.150.218"; //phone
+        //static public string ip = "192.168.0.59"; //computer
         public App()
         {
             InitializeComponent();

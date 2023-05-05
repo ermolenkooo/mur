@@ -11,7 +11,7 @@ namespace kinocat.Services
 {
     public class FollowersService
     {
-        const string Url = "http://192.168.0.59:5000/api/Followings/";
+        string Url = "http://" + App.ip + ":5000/api/Followings/";
         // настройки для десериализации для нечувствительности к регистру символов
         JsonSerializerOptions options = new JsonSerializerOptions
         {

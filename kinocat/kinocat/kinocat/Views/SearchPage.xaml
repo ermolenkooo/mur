@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="kinocat.Views.SearchPage"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center">
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button BackgroundColor="white" Text="Фильмы" FontSize="20" TextColor="Black" TextTransform="None" Command="{Binding FilmCommand}">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Type}" Value="Фильмы">
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding Type}" Value="Сериалы">
+                            <Setter Property="FontAttributes" Value="None"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding Type}" Value="Пользователи">
+                            <Setter Property="FontAttributes" Value="None"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button BackgroundColor="white" Text="Сериалы" FontSize="20" TextColor="Black" TextTransform="None" Command="{Binding SerialCommand}">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Type}" Value="Фильмы">
+                            <Setter Property="FontAttributes" Value="None"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding Type}" Value="Сериалы">
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding Type}" Value="Пользователи">
+                            <Setter Property="FontAttributes" Value="None"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button BackgroundColor="white" Text="Пользователи" FontSize="20" TextColor="Black" TextTransform="None" Command="{Binding UserCommand}">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Type}" Value="Фильмы">
+                            <Setter Property="FontAttributes" Value="None"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding Type}" Value="Сериалы">
+                            <Setter Property="FontAttributes" Value="None"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding Type}" Value="Пользователи">
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+            </StackLayout>
+            
+            <Image Source="rect.png" HeightRequest="60" Margin="10,0"/>
+            <StackLayout Orientation="Horizontal" Margin="0, -65, 0, 0" HorizontalOptions="Center">
+                <Entry Placeholder="Найти" TextColor="White" Text="{Binding Search}" WidthRequest="280"></Entry>
+                <Image Source="search.png" Margin="0, 0, 0, 0" HeightRequest="20" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Picker Title="Выберите страну" TextColor="Black" ItemsSource="{Binding Countries}" SelectedItem="{Binding SelectedCountry, Mode=TwoWay}"/>
+                <Picker Title="Выберите жанр" TextColor="Black" ItemsSource="{Binding Genres}" SelectedItem="{Binding SelectedGenre, Mode=TwoWay}"/>
+                <StackLayout.Triggers>
+                    <DataTrigger Binding="{Binding Type}" Value="Пользователи" TargetType="StackLayout">
+                        <Setter Property="IsVisible" Value="false"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Type}" Value="Фильмы" TargetType="StackLayout">
+                        <Setter Property="IsVisible" Value="true"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Type}" Value="Сериалы" TargetType="StackLayout">
+                        <Setter Property="IsVisible" Value="true"/>
+                    </DataTrigger>
+                </StackLayout.Triggers>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <ListView x:Name="filmsList1" VerticalScrollBarVisibility="Never" ItemsSource="{Binding Films1}" SelectedItem="{Binding SelectedFilm, Mode=TwoWay}" Margin="0, 7, 0, 0" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Vertical" x:Name="Item" HorizontalOptions="Center">
+                                        <Image Source="{Binding Source}" Margin="0,10,0,0" HeightRequest="180" />
+                                        <Label Text="{Binding Name}" TextColor="Black"  FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView x:Name="filmsList2" ItemsSource="{Binding Films2}" VerticalScrollBarVisibility="Never" SelectedItem="{Binding SelectedFilm, Mode=TwoWay}" Margin="0, 7, 0, 0" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Vertical" x:Name="Item" HorizontalOptions="Center">
+                                        <Image Source="{Binding Source}" Margin="0,10,0,0" HeightRequest="180" />
+                                        <Label Text="{Binding Name}" TextColor="Black"  FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout.Triggers>
+                    <DataTrigger Binding="{Binding Type}" Value="Пользователи" TargetType="StackLayout">
+                        <Setter Property="IsVisible" Value="false"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Type}" Value="Фильмы" TargetType="StackLayout">
+                        <Setter Property="IsVisible" Value="true"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Type}" Value="Сериалы" TargetType="StackLayout">
+                        <Setter Property="IsVisible" Value="true"/>
+                    </DataTrigger>
+                </StackLayout.Triggers>
+            </StackLayout>
+
+            <ListView x:Name="followersList" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" HasUnevenRows="True" Margin="20,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" x:Name="Item" HorizontalOptions="Center">
+                                    <Image Source="{Binding Source}" Margin="0,10,15,10" WidthRequest="110"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}" TextColor="Black"  FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Start" Margin="20,25,0,10"/>
+                                        <Button Margin="0, 0, 0, 25" Padding="80, 5" Command="{Binding Source={x:Reference followersList}, Path=BindingContext.ClickCommand}" CommandParameter="{Binding Id}" BackgroundColor="Gray" CornerRadius="60" BorderColor="Black" BorderWidth="1">
+                                            <Button.Triggers>
+                                                <DataTrigger Binding="{Binding ReadMe}" Value="False" TargetType="Button">
+                                                    <Setter Property="Background" Value="black" />
+                                                    <Setter Property="ImageSource" Value="checkmark1.png"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ReadMe}" Value="True" TargetType="Button">
+                                                    <Setter Property="Background" Value="white" />
+                                                    <Setter Property="ImageSource" Value="checkmark.png"/>
+                                                </DataTrigger>
+                                            </Button.Triggers>
+                                        </Button>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Triggers>
+                    <DataTrigger Binding="{Binding Type}" Value="Пользователи" TargetType="ListView">
+                        <Setter Property="IsVisible" Value="true"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Type}" Value="Фильмы" TargetType="ListView">
+                        <Setter Property="IsVisible" Value="false"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Type}" Value="Сериалы" TargetType="ListView">
+                        <Setter Property="IsVisible" Value="false"/>
+                    </DataTrigger>
+                </ListView.Triggers>
+            </ListView>
+
+            <Grid VerticalOptions="End" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <ImageButton Source="fox2.png" BackgroundColor="#D9D9D9" WidthRequest="40" Margin="0, 0, 0, 15" Padding="0" Command="{Binding MyProfilCommand}"/>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <ImageButton Source="search.png" BackgroundColor="#D9D9D9" WidthRequest="55" Margin="0, 0, 0, 15" Padding="12" />
+                </StackLayout>
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

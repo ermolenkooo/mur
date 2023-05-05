@@ -11,7 +11,7 @@
             </Grid.RowDefinitions>
             <StackLayout HorizontalOptions="Center">
                 <StackLayout Orientation="Horizontal" Margin="0, 30, 0, 0">
-                    <Image WidthRequest="180" Source="{Binding User.Source}"/>
+                    <Image WidthRequest="125" Source="{Binding User.Source}"/>
                     <StackLayout VerticalOptions="Center">
                         <Button Margin="20, 0, 0, 5" Padding="50, 5" Command="{Binding FollowCommand}" BackgroundColor="Gray" CornerRadius="60" BorderColor="Black" BorderWidth="1">
                             <Button.Triggers>
@@ -72,8 +72,8 @@
                         </Button.Triggers>
                     </Button>
 
-                    <Button ImageSource="marks.png" Margin="15, 10, 5, 0" TextTransform="None" TextColor="DarkSlateGray" FontSize="22" ContentLayout="Top, 15" Text="Оценки" Command="{Binding MarksCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
-                    <Button ImageSource="love1.png" Margin="15, 10, 5, 10" TextTransform="None" TextColor="DarkSlateGray" FontSize="22" ContentLayout="Top, 15" Text="Любимое" Command="{Binding LoveCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
+                    <Button ImageSource="marks.png" Margin="15, 10, 5, 0" TextTransform="None" TextColor="DarkSlateGray" FontSize="20" ContentLayout="Top, 15" Text="Оценки" Command="{Binding MarksCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
+                    <Button ImageSource="love1.png" Margin="15, 10, 5, 10" TextTransform="None" TextColor="DarkSlateGray" FontSize="20" ContentLayout="Top, 15" Text="Любимое" Command="{Binding LoveCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
 
                     <ImageButton Source="fox2.png" BackgroundColor="#D9D9D9" WidthRequest="40" Padding="0" Command="{Binding MyProfilCommand}"/>
                 </StackLayout>
@@ -98,8 +98,8 @@
                         </Button.Triggers>
                     </Button>
 
-                    <Button ImageSource="watchlist1.png" Margin="5, 10, 15, 0" TextTransform="None" TextColor="DarkSlateGray" FontSize="22" ContentLayout="Top, 15" Text="Watchlist" Command="{Binding WatchlistCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
-                    <Button ImageSource="letters1.png" Margin="5, 10, 15, 10" TextTransform="None" TextColor="DarkSlateGray" FontSize="22" ContentLayout="Top, 15" Text="Рецензии" Command="{Binding LettersCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
+                    <Button ImageSource="watchlist1.png" Margin="5, 10, 15, 0" TextTransform="None" TextColor="DarkSlateGray" FontSize="20" ContentLayout="Top, 15" Text="Watchlist" Command="{Binding WatchlistCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
+                    <Button ImageSource="letters1.png" Margin="5, 10, 15, 10" TextTransform="None" TextColor="DarkSlateGray" FontSize="20" ContentLayout="Top, 15" Text="Рецензии" Command="{Binding LettersCommand}" Background="#D9D9D9" BackgroundColor="Gray" CornerRadius="25" Padding="35, 25"></Button>
 
                     <ImageButton Source="search.png" BackgroundColor="#D9D9D9" WidthRequest="50" Padding="12" Command="{Binding SearchCommand}" />
 

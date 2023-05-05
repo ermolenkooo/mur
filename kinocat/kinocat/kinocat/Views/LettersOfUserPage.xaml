@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="kinocat.Views.LovePage"
+             x:Class="kinocat.Views.LettersOfUserPage"
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center">
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">
-                <Label Text="Любимое" FontSize="30" TextColor="White" Margin="10, 5"></Label>
+                <Label Text="Рецензии" FontSize="30" TextColor="White" Margin="10, 5"></Label>
             </StackLayout>
             <ScrollView>
                 <ListView x:Name="filmsList" ItemsSource="{Binding Films}" SelectedItem="{Binding SelectedFilm, Mode=TwoWay}" HasUnevenRows="True">
@@ -37,6 +37,8 @@
                                                     </DataTrigger>
                                                 </Image.Triggers>
                                             </Image>
+                                            <Label Text="" TextColor="Gray"  FontSize="20" FontAttributes="None" HorizontalTextAlignment="End"/>
+                                            <Label Text="{Binding Time}" TextColor="Gray"  FontSize="20" FontAttributes="None" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell.View>
@@ -46,7 +48,7 @@
                 </ListView>
             </ScrollView>
 
-            <Grid VerticalOptions="End" Grid.Row="1">
+            <Grid VerticalOptions="End" Grid.Row="1" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />

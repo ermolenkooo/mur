@@ -19,8 +19,8 @@
             <StackLayout Padding="10,0">
                 <Label Text="Привет, с возвращением!" FontSize="30" TextColor="Black" HorizontalOptions="Center" FontAttributes="Bold"/>
                 <Label Text="{Binding Warning}" FontSize="18" TextColor="Red" HorizontalOptions="Center"/>
-                <Entry PlaceholderColor="Black" Placeholder="Электронная почта" Text="{Binding Email}" TextColor="Black"/>
-                <Entry PlaceholderColor="Black" Placeholder="Пароль" Text="{Binding Password}" IsPassword="True" TextColor="Black"/>
+                <Entry PlaceholderColor="DarkGray" Placeholder="Электронная почта" Text="{Binding Email}" TextColor="Black"/>
+                <Entry PlaceholderColor="DarkGray" Placeholder="Пароль" Text="{Binding Password}" IsPassword="True" TextColor="Black"/>
                 <Button Text="Войти" TextColor="Black" TextTransform="None" FontSize="27" BackgroundColor="Gray" CornerRadius="40" Command="{Binding LoginCommand}" Margin="0, 5" Background="#D9D9D9"/>
                 <Button Text="Регистрация" TextColor="Black" TextTransform="None" FontSize="27" CornerRadius="40" BackgroundColor="Gray" BorderWidth="2" BorderColor="Black" Command="{Binding RegCommand}" Margin="0, 5" Background="white"/>
             </StackLayout>

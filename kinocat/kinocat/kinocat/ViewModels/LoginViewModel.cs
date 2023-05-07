@@ -71,6 +71,7 @@ namespace kinocat.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
+            //DependencyService.Get<IAudio>().PlayAudioFile();
             User u = new User { Email = Email, Password = Password };
             var user = await usersService.Login(u);
             if (user == null)

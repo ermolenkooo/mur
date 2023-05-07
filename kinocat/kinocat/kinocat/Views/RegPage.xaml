@@ -14,9 +14,9 @@
             <Image Source="lapki1.png" WidthRequest="250" HorizontalOptions="End"/>
             <Label Text="Привет! Рады тебя видеть!" FontSize="30" TextColor="Black" HorizontalOptions="Center" FontAttributes="Bold"/>
             <Label Text="{Binding Warning}" FontSize="18" TextColor="Red" HorizontalOptions="Center"/>
-            <Entry PlaceholderColor="Black" TextColor="Black" Placeholder="Имя пользователя" Text="{Binding Username}"/>
-            <Entry PlaceholderColor="Black" TextColor="Black" Placeholder="Электронная почта" Text="{Binding Email}"/>
-            <Entry PlaceholderColor="Black" TextColor="Black" Placeholder="Пароль" Text="{Binding Password}" IsPassword="True"/>
+            <Entry PlaceholderColor="DarkGray" TextColor="Black" Placeholder="Имя пользователя" Text="{Binding Username}"/>
+            <Entry PlaceholderColor="DarkGray" TextColor="Black" Placeholder="Электронная почта" Text="{Binding Email}"/>
+            <Entry PlaceholderColor="DarkGray" TextColor="Black" Placeholder="Пароль" Text="{Binding Password}" IsPassword="True"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="{Binding File}" TextColor="Black" VerticalOptions="Center" Margin="0, 0, 10, 0"/>
                 <Button Text="Выбрать фото профиля" TextColor="Black" TextTransform="None" FontSize="20" CornerRadius="40" BackgroundColor="Gray" BorderWidth="2" BorderColor="Black" Command="{Binding FileCommand}" Margin="0, 5" Background="white"/>

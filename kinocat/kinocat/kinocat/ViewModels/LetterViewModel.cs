@@ -65,7 +65,7 @@ namespace kinocat.ViewModels
 
         private void FilmClicked(object obj) //переходим к фильму
         {
-            //Navigation.PushAsync(new FilmPage(selectedFilm, SelectedUser));
+            Navigation.PushAsync(new FilmPage(User, Letter.Film));
         }
     }
 }

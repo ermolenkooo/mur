@@ -18,7 +18,7 @@
     "webserver": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://192.168.150.218:5001;http://192.168.150.218:5000",
+      "applicationUrl": "https://192.168.43.218:5001;http://192.168.43.218:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

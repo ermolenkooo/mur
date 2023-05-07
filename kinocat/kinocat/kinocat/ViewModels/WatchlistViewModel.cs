@@ -104,7 +104,7 @@ namespace kinocat.ViewModels
                     Serial tempf = value;
                     selectedFilm = null;
                     OnPropertyChanged("SelectedFilm");
-                        //Navigation.PushAsync(new FilmPage(AuthoUser, film));
+                    Navigation.PushAsync(new FilmPage(AuthoUser, tempf));
                 }
             }
         }
@@ -173,7 +173,7 @@ namespace kinocat.ViewModels
                     if (await serialsService.GetID(w.Id_film) != null)
                     {
                         Serial s = await serialsService.GetID(w.Id_film);
-                        s.Poster =  s.Poster.Replace("data:image/jpeg;base64,", "");
+                        s.Poster = s.Poster.Replace("data:image/jpeg;base64,", "");
                         byte[] Base64Stream = Convert.FromBase64String(s.Poster);
                         s.Source = ImageSource.FromStream(() => new MemoryStream(Base64Stream));
                         films.Add(s);

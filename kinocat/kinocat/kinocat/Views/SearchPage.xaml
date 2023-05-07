@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="kinocat.Views.SearchPage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center">
@@ -50,7 +51,7 @@
                 </Button>
 
             </StackLayout>
-            
+
             <Image Source="rect.png" HeightRequest="60" Margin="10,0"/>
             <StackLayout Orientation="Horizontal" Margin="0, -65, 0, 0" HorizontalOptions="Center">
                 <Entry Placeholder="Найти" TextColor="White" Text="{Binding Search}" WidthRequest="280"></Entry>
@@ -58,8 +59,8 @@
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Picker Title="Выберите страну" TextColor="Black" ItemsSource="{Binding Countries}" SelectedItem="{Binding SelectedCountry, Mode=TwoWay}"/>
-                <Picker Title="Выберите жанр" TextColor="Black" ItemsSource="{Binding Genres}" SelectedItem="{Binding SelectedGenre, Mode=TwoWay}"/>
+                <Picker TitleColor="Black" Title="Выберите страну" TextColor="Black" ItemsSource="{Binding Countries}" SelectedItem="{Binding SelectedCountry, Mode=TwoWay}"/>
+                <Picker TitleColor="Black" Title="Выберите жанр" TextColor="Black" ItemsSource="{Binding Genres}" SelectedItem="{Binding SelectedGenre, Mode=TwoWay}"/>
                 <StackLayout.Triggers>
                     <DataTrigger Binding="{Binding Type}" Value="Пользователи" TargetType="StackLayout">
                         <Setter Property="IsVisible" Value="false"/>
@@ -121,7 +122,7 @@
                         <ViewCell>
                             <ViewCell.View>
                                 <StackLayout Orientation="Horizontal" x:Name="Item" HorizontalOptions="Center">
-                                    <Image Source="{Binding Source}" Margin="0,10,15,10" WidthRequest="110"/>
+                                    <controls:CircleImage Source="{Binding Source}" Margin="0,10,15,10" WidthRequest="110"/>
                                     <StackLayout>
                                         <Label Text="{Binding Name}" TextColor="Black"  FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Start" Margin="20,25,0,10"/>
                                         <Button Margin="0, 0, 0, 25" Padding="80, 5" Command="{Binding Source={x:Reference followersList}, Path=BindingContext.ClickCommand}" CommandParameter="{Binding Id}" BackgroundColor="Gray" CornerRadius="60" BorderColor="Black" BorderWidth="1">
@@ -169,7 +170,7 @@
                     <ImageButton Source="search.png" BackgroundColor="#D9D9D9" WidthRequest="55" Margin="0, 0, 0, 15" Padding="12" />
                 </StackLayout>
             </Grid>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

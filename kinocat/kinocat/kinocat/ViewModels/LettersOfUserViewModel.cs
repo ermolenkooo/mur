@@ -92,7 +92,7 @@ namespace kinocat.ViewModels
                     Serial tempf = value;
                     selectedFilm = null;
                     OnPropertyChanged("SelectedFilm");
-                    Letter letter = letters.Where(x => x.Id_film == tempf.Id).First();
+                    Letter letter = letters.Where(x => x.Id_film == tempf.Id && x.Time.ToString("d") == tempf.Time).First();
                     letter.User = AuthoUser;
                     letter.Film = tempf;
                     Navigation.PushAsync(new LetterPage(AuthoUser, letter));

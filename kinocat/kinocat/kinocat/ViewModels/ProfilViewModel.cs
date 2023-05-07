@@ -117,6 +117,8 @@ namespace kinocat.ViewModels
         {
             var followers = await followersService.GetFollowers(User.Id);
             var following = await followersService.GetFollowings(User.Id);
+            if (followers.Where(x => x.Id_follower == AuthoUser.Id).Any())
+                User.ReadMe = true;
             User.CountOfFollowers = followers.Count();
             User.CountOfFollowing = following.Count();
         }

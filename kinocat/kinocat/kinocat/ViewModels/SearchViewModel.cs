@@ -273,7 +273,7 @@ namespace kinocat.ViewModels
                     Serial tmpfilm = value;
                     selectedFilm = null;
                     OnPropertyChanged("SelectedFilm");
-                    //Navigation.PushAsync(new FilmPage(tmpfilm, User));
+                    Navigation.PushAsync(new FilmPage(User, tmpfilm));
                 }
             }
         }
@@ -373,7 +373,7 @@ namespace kinocat.ViewModels
                 Films1 = f1;
                 Films2 = f2;
             }
-            else 
+            else
             if (Type == "Сериалы")
             {
                 List<Serial> searchfilms = new List<Serial>();
@@ -416,7 +416,7 @@ namespace kinocat.ViewModels
                 Users.Clear();
                 foreach (var u in allUsers)
                     if (Search == "" || u.Name.StartsWith(search, StringComparison.OrdinalIgnoreCase))
-                        if(u.Id != User.Id)
+                        if (u.Id != User.Id)
                             Users.Add(u);
             }
         }

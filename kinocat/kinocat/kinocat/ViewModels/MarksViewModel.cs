@@ -90,7 +90,7 @@ namespace kinocat.ViewModels
                     Serial tempf = value;
                     selectedFilm = null;
                     OnPropertyChanged("SelectedFilm");
-                    //Navigation.PushAsync(new FilmPage(AuthoUser, film));
+                    Navigation.PushAsync(new FilmPage(AuthoUser, tempf));
                 }
             }
         }

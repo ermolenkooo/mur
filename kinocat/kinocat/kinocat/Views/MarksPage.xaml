@@ -15,7 +15,7 @@
                             <ViewCell>
                                 <ViewCell.View>
                                     <StackLayout Orientation="Horizontal" x:Name="Item" HorizontalOptions="Center">
-                                        <Image Source="{Binding Source}" Margin="20,10,15,12" HeightRequest="180" />
+                                        <Image Source="{Binding Source}" Margin="20,10,0,12" HeightRequest="180" />
                                         <StackLayout VerticalOptions="End">
                                             <Label Text="{Binding Name}" TextColor="Black" WidthRequest="190" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                             <Image WidthRequest="190" HorizontalOptions="Center">

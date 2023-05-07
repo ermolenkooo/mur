@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="kinocat.Views.LetterPage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center">
@@ -11,15 +12,15 @@
             <ScrollView>
                 <StackLayout Orientation="Vertical">
                     <StackLayout Orientation="Horizontal" Background="#D9D9D9" HorizontalOptions="FillAndExpand">
-                        <Image Source="{Binding Letter.User.Source}" Margin="20, 12, 10, 12" WidthRequest="90">
+                        <controls:CircleImage Source="{Binding Letter.User.Source}" Margin="20, 12, 10, 12" WidthRequest="90">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding UserCommand}"></TapGestureRecognizer>
                             </Image.GestureRecognizers>
-                        </Image>
+                        </controls:CircleImage>
                         <Label Text="{Binding Letter.User.Name}" FontSize="22" FontAttributes="Bold" TextColor="Black" Margin="0, 12"></Label>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <Image Source="{Binding Letter.Film.Source}" Margin="0, 10, 10, 10" HeightRequest="180">
+                        <Image Source="{Binding Letter.Film.Source}" Margin="10, 10, 0, 10" HeightRequest="180">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding FilmCommand}"></TapGestureRecognizer>
                             </Image.GestureRecognizers>
@@ -48,7 +49,7 @@
                         </StackLayout>
                     </StackLayout>
                     <StackLayout Background="#D9D9D9">
-                        <Editor Text="{Binding Letter.Text}" Margin="12" FontSize="22" AutoSize="TextChanges" IsReadOnly="True"></Editor>
+                        <Editor TextColor="Black" Text="{Binding Letter.Text}" Margin="12" FontSize="22" AutoSize="TextChanges" IsReadOnly="True"></Editor>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

@@ -22,8 +22,10 @@ namespace kinocat.ViewModels
         Serial selectedFilm;
         ObservableCollection<Serial> films;
         IEnumerable<Letter> letters;
+        IEnumerable<User> users;
         User user, authoUser;
         string type;
+        UsersService usersService = new UsersService();
         MarksService marksService = new MarksService();
         LettersService lettersService = new LettersService();
         FilmsService filmsService = new FilmsService();
@@ -93,7 +95,11 @@ namespace kinocat.ViewModels
                     selectedFilm = null;
                     OnPropertyChanged("SelectedFilm");
                     Letter letter = letters.Where(x => x.Id_film == tempf.Id && x.Time.ToString("d") == tempf.Time).First();
-                    letter.User = AuthoUser;
+                    var u = users.Where(x => x.Id == letter.Id_user).First();
+                    u.Photo = u.Photo.Replace("data:image/jpeg;base64,", "");
+                    byte[] Base64Stream = Convert.FromBase64String(u.Photo);
+                    u.Source = ImageSource.FromStream(() => new MemoryStream(Base64Stream));
+                    letter.User = u;
                     letter.Film = tempf;
                     Navigation.PushAsync(new LetterPage(AuthoUser, letter));
                 }
@@ -127,6 +133,7 @@ namespace kinocat.ViewModels
 
         private async void GetData()
         {
+            users = await usersService.Get();
             var marks = await marksService.GetMarksOfUser(User.Id);
             letters = await lettersService.GetLettersOfUser(User.Id);
             if (Type == "Фильмы")

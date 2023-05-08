@@ -14,10 +14,10 @@
                         <Image Margin="0, 0, 0, 10" WidthRequest="50">
                             <Image.Triggers>
                                 <DataTrigger Binding="{Binding IsLove}" Value="true" TargetType="Image">
-                                    <Setter Property="Source" Value="blacklove.png" />
+                                    <Setter Property="Source" Value="blacklove1.png" />
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding IsLove}" Value="false" TargetType="Image">
-                                    <Setter Property="Source" Value="whitelove.png" />
+                                    <Setter Property="Source" Value="whitelove1.png" />
                                 </DataTrigger>
                             </Image.Triggers>
                             <Image.GestureRecognizers>
@@ -27,17 +27,17 @@
                         <Image Margin="0, 0, 0, 10" WidthRequest="50">
                             <Image.Triggers>
                                 <DataTrigger Binding="{Binding IsWant}" Value="true" TargetType="Image">
-                                    <Setter Property="Source" Value="blackwant.png" />
+                                    <Setter Property="Source" Value="blackwant1.png" />
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding IsWant}" Value="false" TargetType="Image">
-                                    <Setter Property="Source" Value="whitewant.png" />
+                                    <Setter Property="Source" Value="whitewant1.png" />
                                 </DataTrigger>
                             </Image.Triggers>
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding WantCommand}"></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
-                        <Image Source="letter.png" WidthRequest="50">
+                        <Image Source="letter1.png" WidthRequest="50">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding LetterCommand}"></TapGestureRecognizer>
                             </Image.GestureRecognizers>

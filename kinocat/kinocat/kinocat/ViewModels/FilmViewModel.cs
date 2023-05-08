@@ -57,8 +57,8 @@ namespace kinocat.ViewModels
         public FilmViewModel(User u, Serial f)
         {
             marks = new ObservableCollection<MarkOfUser>();
-            selectedUser = u;
-            selectedFilm = f;
+            SelectedUser = u;
+            SelectedFilm = f;
             UserCommand = new Command(UserClicked);
             LoveCommand = new Command(OnLoveClicked);
             WantCommand = new Command(OnWantClicked);
@@ -364,7 +364,7 @@ namespace kinocat.ViewModels
 
         private void OnClicked(object obj) //рецензии
         {
-            //Navigation.PushAsync(new LettersOfFilmPage(SelectedUser, SelectedFilm));
+            Navigation.PushAsync(new LettersOfFilmPage(SelectedFilm, SelectedUser));
         }
 
         private async void OnStar1Clicked(object obj)

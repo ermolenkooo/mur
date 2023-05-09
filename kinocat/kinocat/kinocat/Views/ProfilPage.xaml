@@ -42,6 +42,16 @@
                                 </DataTrigger>
                             </Button.Triggers>
                         </Button>
+                        <Button Text="Выйти" TextColor="Black" Background="white" Margin="20, 5, 0, 0" Command="{Binding LogoutCommand}" CornerRadius="60" BorderColor="Black" BorderWidth="1">
+                            <Button.Triggers>
+                                <DataTrigger Binding="{Binding IsMe}" Value="true" TargetType="Button">
+                                    <Setter Property="IsVisible" Value="true"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsMe}" Value="false" TargetType="Button">
+                                    <Setter Property="IsVisible" Value="false"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
                     </StackLayout>
                 </StackLayout>
                 <Label Text="{Binding User.Name}" FontSize="25" TextColor="Black" Margin="20, 0, 0, 0" FontAttributes="Bold"/>

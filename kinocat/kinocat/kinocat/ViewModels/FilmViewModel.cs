@@ -37,6 +37,7 @@ namespace kinocat.ViewModels
         private bool star3;
         private bool star4;
         private bool star5;
+        private double rating;
 
         IEnumerable<MarkOfUser> marksofuser;
         IEnumerable<MarkOfUser> marksoffilm;
@@ -100,6 +101,8 @@ namespace kinocat.ViewModels
                 users.Add(await usersService.GetID(follow.Id_following));
 
             foreach (var m in marksoffilm)
+            {
+                Rating += m.Mark;
                 foreach (var us in users)
                     if (m.Id_user == us.Id)
                     {
@@ -109,6 +112,9 @@ namespace kinocat.ViewModels
                         marks.Add(new MarkOfUser { Mark = m.Mark, Source = us.Source, Id_user = us.Id });
                         break;
                     }
+            }
+            Rating /= marksoffilm.Count();
+            Rating = Math.Round(Rating, 1);
 
             loves = await lovesService.Get(SelectedUser.Id);
             watch = await watchlistsService.Get(SelectedUser.Id);
@@ -195,6 +201,19 @@ namespace kinocat.ViewModels
                 {
                     selectedUser = value;
                     OnPropertyChanged("SelectedUser");
+                }
+            }
+        }
+
+        public double Rating
+        {
+            get { return rating; }
+            set
+            {
+                if (rating != value)
+                {
+                    rating = value;
+                    OnPropertyChanged("Rating");
                 }
             }
         }
@@ -359,7 +378,7 @@ namespace kinocat.ViewModels
 
         private void OnLetterClicked(object obj) //написать рецензию
         {
-            //Navigation.PushAsync(new WriteLetterPage(SelectedUser, SelectedFilm));
+            Navigation.PushAsync(new WriteLetterPage(SelectedFilm, SelectedUser));
         }
 
         private void OnClicked(object obj) //рецензии

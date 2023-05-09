@@ -16715,31 +16715,34 @@ namespace kinocat.Droid
 			public const int rect = 2131165344;
 			
 			// aapt resource value: 0x7F0700A1
-			public const int search = 2131165345;
+			public const int rectangle = 2131165345;
 			
 			// aapt resource value: 0x7F0700A2
-			public const int star = 2131165346;
+			public const int search = 2131165346;
 			
 			// aapt resource value: 0x7F0700A3
-			public const int test_custom_background = 2131165347;
+			public const int star = 2131165347;
 			
 			// aapt resource value: 0x7F0700A4
-			public const int tooltip_frame_dark = 2131165348;
+			public const int test_custom_background = 2131165348;
 			
 			// aapt resource value: 0x7F0700A5
-			public const int tooltip_frame_light = 2131165349;
+			public const int tooltip_frame_dark = 2131165349;
 			
 			// aapt resource value: 0x7F0700A6
-			public const int watchlist1 = 2131165350;
+			public const int tooltip_frame_light = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int whitecircle = 2131165351;
+			public const int watchlist1 = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int whitelove1 = 2131165352;
+			public const int whitecircle = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int whitewant1 = 2131165353;
+			public const int whitelove1 = 2131165353;
+			
+			// aapt resource value: 0x7F0700AA
+			public const int whitewant1 = 2131165354;
 			
 			static Drawable()
 			{

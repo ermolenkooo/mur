@@ -12,6 +12,7 @@ namespace kinocat.ViewModels
 {
     public class ProfilViewModel : BaseViewModel
     {
+        public Command LogoutCommand { get; }
         public Command FollowingCommand { get; }
         public Command FollowersCommand { get; }
         public Command MarksCommand { get; }
@@ -95,6 +96,7 @@ namespace kinocat.ViewModels
 
             GetCount();
 
+            LogoutCommand = new Command(OnLogoutClicked);
             FollowingCommand = new Command(OnFollowingClicked);
             FollowersCommand = new Command(OnFollowersClicked);
             MarksCommand = new Command(OnMarksClicked);
@@ -111,6 +113,11 @@ namespace kinocat.ViewModels
         private void OnMyProfilClicked(object obj)
         {
             Navigation.PushAsync(new ProfilPage(AuthoUser, AuthoUser));
+        }
+
+        private void OnLogoutClicked(object obj)
+        {
+            Navigation.PushAsync(new LoginPage());
         }
 
         private async void GetCount()
@@ -145,7 +152,7 @@ namespace kinocat.ViewModels
 
         private void OnStatClicked(object obj)
         {
-            //Navigation.PushAsync(new StatPage(User));
+            Navigation.PushAsync(new StatPage(AuthoUser));
         }
 
         private void OnFollowingClicked(object obj)
@@ -192,7 +199,7 @@ namespace kinocat.ViewModels
 
         private void OnSearchClicked(object obj)
         {
-            Navigation.PushAsync(new SearchPage(User));
+            Navigation.PushAsync(new SearchPage(AuthoUser));
         }
     }
 }
